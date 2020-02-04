@@ -18,13 +18,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -44,21 +44,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SIV3D_0_4_2)\include;$(SIV3D_0_4_2)\include\ThirdParty;$(IncludePath)</IncludePath>
+    <IncludePath>$(SIV3D_0_4_2)\include;$(SIV3D_0_4_2)\include\ThirdParty;$(ProjectDir)\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SIV3D_0_4_2)\lib\Windows;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Intermediate\$(ProjectName)\Debug\</OutDir>
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Debug\Intermediate\</IntDir>
     <TargetName>$(ProjectName)(debug)</TargetName>
     <LocalDebuggerWorkingDirectory>$(ProjectDir)App</LocalDebuggerWorkingDirectory>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SIV3D_0_4_2)\include;$(SIV3D_0_4_2)\include\ThirdParty;$(IncludePath)</IncludePath>
+    <IncludePath>$(SIV3D_0_4_2)\include;$(SIV3D_0_4_2)\include\ThirdParty;$(ProjectDir)\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SIV3D_0_4_2)\lib\Windows;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\</OutDir>
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\Intermediate\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <LocalDebuggerWorkingDirectory>$(ProjectDir)App</LocalDebuggerWorkingDirectory>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -108,7 +110,15 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="src\Parser\TiledReader.cpp" />
+    <ClCompile Include="src\Parser\TmxParser.cpp" />
+    <ClCompile Include="src\TiledLayer\TiledLayer.cpp" />
+    <ClCompile Include="src\TiledMap\CTiledMap.cpp" />
+    <ClCompile Include="src\TiledMap\TiledMap.cpp" />
+    <ClCompile Include="src\TiledObject\TiledObject.cpp" />
+    <ClCompile Include="src\TiledProperty\TiledProperty.cpp" />
+    <ClCompile Include="src\TiledSets\TiledSets.cpp" />
+    <ClCompile Include="src\TiledSets\TileSetBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
@@ -231,6 +241,20 @@
     <None Include="App\example\shader\2d\swirl.hlsl">
       <FileType>Document</FileType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\S3DTiled.hpp" />
+    <ClInclude Include="include\S3DTiled\TiledLayer.hpp" />
+    <ClInclude Include="include\S3DTiled\TiledMap.hpp" />
+    <ClInclude Include="include\S3DTiled\TiledObject.hpp" />
+    <ClInclude Include="include\S3DTiled\TiledProperty.hpp" />
+    <ClInclude Include="include\S3DTiled\TiledShape.hpp" />
+    <ClInclude Include="include\S3DTiled\TiledTypes.hpp" />
+    <ClInclude Include="src\Parser\TiledParser.hpp" />
+    <ClInclude Include="src\Parser\TiledReader.hpp" />
+    <ClInclude Include="src\TiledMap\CTiledMap.hpp" />
+    <ClInclude Include="src\TiledSets\TiledSets.hpp" />
+    <ClInclude Include="src\TiledSets\TileSetBase.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
