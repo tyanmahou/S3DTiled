@@ -254,7 +254,7 @@ namespace
 			};
 			obj.rotation = Parse<double>(xml.attribute(U"rotation").value_or(U"0"));
 			if (auto && gId = xml.attribute(U"gid")) {
-				// TODO flip
+				// TODO(@tyanmahou): flip
 				obj.gId = Parse<GId>(xml.attribute(U"gid").value());
 			}
 			Vec2 size{

@@ -22,7 +22,7 @@ namespace s3dTiled
 			if (fileType == TiledFileType::Tmx || FileSystem::Extension(path) == U"tmx") {
 				m_map = ParseTmx(path);
 			} else if (fileType == TiledFileType::Json || FileSystem::Extension(path) == U"json") {
-				// TODO Json Parse
+				// TODO(@tyanmahou): Json Parse
 			}
 			return static_cast<bool>(m_map);
 		}
