@@ -6,14 +6,16 @@
 #include <Siv3D/Math.hpp>
 #include <Siv3D/Mat3x2.hpp>
 
-using namespace s3d;
+
 namespace s3dTiled
 {
+    using namespace s3d;
+
 	TiledLayer::TiledLayer(std::shared_ptr<TiledLayerBase> layer) :
 		pImpl(layer)
 	{}
 
-	bool TiledLayer::draw(const TiledMap& map, const s3d::Rect& rect) const
+	bool TiledLayer::draw(const TiledMap& map, const Rect& rect) const
 	{
 		return pImpl->draw(map, rect);
 	}
@@ -26,12 +28,12 @@ namespace s3dTiled
 		return this->pImpl->getType();
 	}
 
-	const s3d::String& TiledLayer::getName() const
+	const String& TiledLayer::getName() const
 	{
 		return this->pImpl->getName();
 	}
 
-	s3d::Optional<TiledProperty> TiledLayer::getProperty(const s3d::String& key) const
+	Optional<TiledProperty> TiledLayer::getProperty(const String& key) const
 	{
 		return pImpl->getProperty(key);
 	}
@@ -106,39 +108,39 @@ namespace s3dTiled
 	{
 		this->m_props = std::move(props);
 	}
-	s3d::Optional<TiledProperty> TiledLayerBase::getProperty(const s3d::String& key) const
+	Optional<TiledProperty> TiledLayerBase::getProperty(const String& key) const
 	{
 		if (this->m_props.find(key) != this->m_props.end()) {
 			return this->m_props.at(key);
 		}
-		return s3d::none;
+		return none;
 	}
-	void TiledLayerBase::setName(const s3d::String& name)
+	void TiledLayerBase::setName(const String& name)
 	{
 		this->m_name = name;
 	}
-	const s3d::String& TiledLayerBase::getName() const
+	const String& TiledLayerBase::getName() const
 	{
 		return m_name;
 	}
-	void TiledLayerBase::setOffset(const s3d::Vec2& offset)
+	void TiledLayerBase::setOffset(const Vec2& offset)
 	{
 		this->m_offset = offset;
 	}
 
-	const s3d::Vec2& TiledLayerBase::getOffset() const
+	const Vec2& TiledLayerBase::getOffset() const
 	{
 		return m_offset;
 	}
 
 	// ImageLayer
 
-	void ImageLayer::setTexture(s3d::Texture texture)
+	void ImageLayer::setTexture(Texture texture)
 	{
 		m_texture = texture;
 	}
 
-	const s3d::Texture& ImageLayer::getTexture() const
+	const Texture& ImageLayer::getTexture() const
 	{
 		return m_texture;
 	}
@@ -169,7 +171,7 @@ namespace s3dTiled
 		this->m_gIds = std::move(grid);
 	}
 
-	const s3d::Grid<GId>& TileLayer::getGrid() const
+	const Grid<GId>& TileLayer::getGrid() const
 	{
 		return m_gIds;
 	}
@@ -221,7 +223,7 @@ namespace s3dTiled
 		this->m_objects.push_back(std::move(obj));
 	}
 
-	const s3d::Array<TiledObject>& ObjectGroup::getObjects() const
+	const Array<TiledObject>& ObjectGroup::getObjects() const
 	{
 		return m_objects;
 	}
@@ -240,7 +242,7 @@ namespace s3dTiled
 				Vec2 offset{ texture.size.x / 2, -+texture.size.y / 2 };
 				pos += offset;
 
-				double rad = s3d::Math::ToRadians(obj.rotation);
+				double rad = Math::ToRadians(obj.rotation);
 				pos = Mat3x2::Rotate(rad, obj.pos).transform(pos);
 
 				auto&& textureQuad = texture.rotated(rad);
@@ -263,11 +265,11 @@ namespace s3dTiled
 	{
 		m_layers.push_back(layer);
 	}
-	const s3d::Array<TiledLayer>& GroupLayer::getLayers() const
+	const Array<TiledLayer>& GroupLayer::getLayers() const
 	{
 		return m_layers;
 	}
-	bool GroupLayer::draw(const TiledMap& map, const s3d::Rect& rect) const
+	bool GroupLayer::draw(const TiledMap& map, const Rect& rect) const
 	{
 		for (auto&& layer: m_layers) {
 			layer.draw(map, rect);

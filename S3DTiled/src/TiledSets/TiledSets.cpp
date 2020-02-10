@@ -3,10 +3,10 @@
 
 #include <Siv3D/TextureRegion.hpp>
 
-using namespace s3d;
-
 namespace s3dTiled
 {
+    using namespace s3d;
+
 	class TiledSets::CTiledSets
 	{
 		friend class TiledSets;

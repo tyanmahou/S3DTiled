@@ -1,16 +1,16 @@
 ﻿#pragma once
 
-#include "TiledTypes.hpp"
-#include "TiledProperty.hpp"
-#include "TiledObject.hpp"
+#include <memory>
+#include <functional>
 
 #include<Siv3D/Texture.hpp>
 #include<Siv3D/Grid.hpp>
 #include <Siv3D/String.hpp>
 #include <Siv3D/Vector2D.hpp>
 
-#include <memory>
-#include <functional>
+#include "TiledTypes.hpp"
+#include "TiledProperty.hpp"
+#include "TiledObject.hpp"
 
 namespace s3dTiled
 {

@@ -1,9 +1,9 @@
 ﻿#include <S3DTiled/TiledProperty.hpp>
 
-using namespace s3d;
-
 namespace s3dTiled
 {
+    using namespace s3d;
+
 	TiledProperty::TiledProperty() :
 		m_type(Type::None)
 	{

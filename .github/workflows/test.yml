@@ -12,4 +12,4 @@ jobs:
     - name: action-cpp-lint
       uses: CyberZHG/github-action-cpp-lint@0.0.2
       with:
-        args: "--filter=-legal,-whitespace,-runtime/indentation_namespace --recursive S3DTiled/include/* S3DTiled/src/*"
+        args: "--filter=-legal,-whitespace,-runtime/indentation_namespace,-runtime/explicit,-build/header_guard --recursive S3DTiled/include/* S3DTiled/src/*"

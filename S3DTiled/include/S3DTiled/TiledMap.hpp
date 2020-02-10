@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "TiledTypes.hpp"
-
 #include <memory>
+
+#include "TiledTypes.hpp"
 
 namespace s3dTiled
 {

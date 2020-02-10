@@ -10,10 +10,9 @@
 #include <Siv3D/Parse.hpp>
 #include <Siv3D/FileSystem.hpp>
 
-using namespace s3d;
-
 namespace
 {
+    using namespace s3d;
 	using namespace s3dTiled;
 
 	s3d::Color ParseTiledColor(const s3d::String& str)
