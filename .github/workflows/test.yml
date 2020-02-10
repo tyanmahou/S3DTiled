@@ -1,17 +1,15 @@
-name: Test
+name: CI
 
 on: [push]
 
 jobs:
-  test:
+  lint:
 
     runs-on: ubuntu-latest
-
+    
     steps:
     - uses: actions/checkout@v2
     - name: action-cpp-lint
       uses: CyberZHG/github-action-cpp-lint@0.0.2
-    - name: test
-      run: |
-        echo test,
-        ls
+      with:
+        args: "--filter=-legal,-whitespace --root=S3DTiled --recursive include/*,src/*"
