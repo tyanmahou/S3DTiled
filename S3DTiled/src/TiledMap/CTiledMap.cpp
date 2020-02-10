@@ -1,4 +1,4 @@
-#include "CTiledMap.hpp"
+﻿#include "CTiledMap.hpp"
 
 namespace s3dTiled
 {
@@ -35,4 +35,4 @@ namespace s3dTiled
 
 		m_layers.push_back(layer);
 	}
-}
+} // namespace s3dTiled

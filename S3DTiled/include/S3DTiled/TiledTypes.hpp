@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <Siv3D/Fwd.hpp>
 #include <unordered_map>
@@ -12,7 +12,7 @@ namespace s3dTiled
 	using TiledProperties = std::unordered_map<s3d::String, TiledProperty>;
 
 	/// <summary>
-	/// Tiled‚Ìƒtƒ@ƒCƒ‹Œ`®
+	/// Tiledã®ãƒ•ã‚¡ã‚¤ãƒ«å½¢å¼
 	/// </summary>
 	enum class TiledFileType
 	{
@@ -20,4 +20,4 @@ namespace s3dTiled
 		Tmx,
 		Json
 	};
-}
+} // namespace s3dTiled

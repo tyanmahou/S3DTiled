@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "TiledTypes.hpp"
 #include "TiledProperty.hpp"
@@ -27,4 +27,4 @@ namespace s3dTiled
 
 		s3d::RectF toRectF() const;
 	};
-}
+} // namespace s3dTiled

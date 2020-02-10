@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include<S3DTiled/TiledTypes.hpp>
 
@@ -12,7 +12,7 @@ namespace s3dTiled
 	class CTiledMap;
 
 	/// <summary>
-	/// Tiled“Ç‚İ‚İ
+	/// Tiledèª­ã¿è¾¼ã¿
 	/// </summary>
 	class TiledReader
 	{
@@ -33,5 +33,5 @@ namespace s3dTiled
 
 		std::shared_ptr<CTiledMap> getTiledMap() const;
 	};
-}
+} // namespace s3dTiled
 

@@ -1,4 +1,4 @@
-#include <S3DTiled/TiledProperty.hpp>
+﻿#include <S3DTiled/TiledProperty.hpp>
 
 using namespace s3d;
 
@@ -198,4 +198,4 @@ namespace s3dTiled
 
 		return *this;
 	}
-}
+} // namespace s3dTiled

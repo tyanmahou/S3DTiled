@@ -1,4 +1,4 @@
-#include "TiledSets.hpp"
+ï»¿#include "TiledSets.hpp"
 #include "TileSetBase.hpp"
 
 #include <Siv3D/TextureRegion.hpp>
@@ -12,14 +12,14 @@ namespace s3dTiled
 		friend class TiledSets;
 
 		Array<std::unique_ptr<TileSetBase>> m_tileSets;
-		std::unordered_map<GId, uint32> m_gIdTileIndexMap; // gId‚©‚çtileƒZƒbƒg‚Ö‚ÌŒŸõ‚ğO(1)‚É‚µ‚Ü‚·
+		std::unordered_map<GId, uint32> m_gIdTileIndexMap; // gIdã‹ã‚‰tileã‚»ãƒƒãƒˆã¸ã®æ¤œç´¢ã‚’O(1)ã«ã—ã¾ã™
 
 	public:
 		void addTileSet(std::unique_ptr<TileSetBase>&& tileSet)
 		{
 			m_tileSets.push_back(std::move(tileSet));
 
-			// gId‚©‚çtileset‚Ö‚Ìƒ}ƒbƒsƒ“ƒO‚ğì¬
+			// gIdã‹ã‚‰tilesetã¸ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’ä½œæˆ
 			const auto& last = m_tileSets.back();
 			for (TileId id = 0; id < last->getTileCount(); ++id) {
 				m_gIdTileIndexMap[last->getFirstGId() + id] = static_cast<s3d::uint32>(m_tileSets.size()) - 1;
@@ -51,4 +51,4 @@ namespace s3dTiled
 	{
 		pImpl->addTileSet(std::move(tileSet));
 	}
-}
+} // namespace s3dTiled

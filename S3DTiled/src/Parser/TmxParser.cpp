@@ -61,11 +61,9 @@ namespace
 			for (auto elm = root.firstChild(); elm; elm = elm.nextSibling()) {
 				if (auto && layer = this->tryParseLayer(elm)) {
 					map->addLayer(TiledLayer(layer));
-				}
-				else if (auto && tileSet = this->tryTileSet(elm)) {
+				} else if (auto && tileSet = this->tryTileSet(elm)) {
 					map->addTileSet(std::move(tileSet));
-				}
-				else if (elm.name() == U"properties") {
+				} else if (elm.name() == U"properties") {
 					map->setProps(this->parseProps(elm));
 				}
 
@@ -78,15 +76,12 @@ namespace
 		{
 			if (xml.name() == U"imagelayer") {
 				return this->parseImageLayer(xml);
-			}
-			else if (xml.name() == U"layer") {
+			} else if (xml.name() == U"layer") {
 				return this->parseTileLayer(xml);
 
-			}
-			else if (xml.name() == U"objectgroup") {
+			} else if (xml.name() == U"objectgroup") {
 				return this->parseObjectGroup(xml);
-			}
-			else if (xml.name() == U"group") {
+			} else if (xml.name() == U"group") {
 				return this->parseGroupLayer(xml);
 			}
 			return nullptr;
@@ -112,8 +107,7 @@ namespace
 			for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
 				if (elm.name() == U"image") {
 					layer->setTexture(Texture(this->m_parentPath + elm.attribute(U"source").value_or(U"")));
-				}
-				else if (elm.name() == U"properties") {
+				} else if (elm.name() == U"properties") {
 					layer->setProps(this->parseProps(elm));
 				}
 			}
@@ -128,8 +122,7 @@ namespace
 			for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
 				if (elm.name() == U"object") {
 					layer->addObject(this->parseObject(elm));
-				}
-				else if (elm.name() == U"properties") {
+				} else if (elm.name() == U"properties") {
 					layer->setProps(this->parseProps(elm));
 				}
 			}
@@ -151,8 +144,7 @@ namespace
 				if (elm.name() == U"data") {
 					int y = 0;
 					int x = 0;
-					for (auto&& row : elm.text().split(U'\n'))
-					{
+					for (auto&& row : elm.text().split(U'\n')) {
 						for (auto&& col : row.split(U',')) {
 							if (col.isEmpty()) {
 								continue;
@@ -164,8 +156,7 @@ namespace
 						y++;
 					}
 					layer->setGrid(std::move(grid));
-				}
-				else if (elm.name() == U"properties") {
+				} else if (elm.name() == U"properties") {
 					layer->setProps(this->parseProps(elm));
 				}
 			}
@@ -180,8 +171,7 @@ namespace
 			for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
 				if (auto&& child = this->tryParseLayer(elm)) {
 					layer->addLayer(TiledLayer(child));
-				}
-				else if (elm.name() == U"properties") {
+				} else if (elm.name() == U"properties") {
 					layer->setProps(this->parseProps(elm));
 				}
 			}
@@ -207,17 +197,13 @@ namespace
 
 			if (type == U"bool") {
 				return Parse<bool>(value);
-			}
-			else if (type == U"color") {
+			} else if (type == U"color") {
 				return ParseTiledColor(value);
-			}
-			else if (type == U"float") {
+			} else if (type == U"float") {
 				return Parse<double>(value);
-			}
-			else if (type == U"int") {
+			} else if (type == U"int") {
 				return Parse<int32>(value);
-			}
-			else {
+			} else {
 				return type == U"file" ? this->m_parentPath + value : value;
 			}
 		}
@@ -315,8 +301,7 @@ namespace
 			}
 			if (xml.attribute(U"columns").value_or(U"0") == U"0") {
 				return this->parseVariousTileSet(xml);
-			}
-			else {
+			} else {
 				return this->parseUniformTileSet(xml);
 			}
 		}
@@ -384,9 +369,8 @@ namespace
 			return tileSet;
 		}
 	};
+}  // namespace
 
-
-}
 namespace s3dTiled
 {
 	std::shared_ptr<CTiledMap> ParseTmx(const s3d::FilePath& path)
@@ -394,4 +378,4 @@ namespace s3dTiled
 		TmxParser parser;
 		return parser.parse(path);
 	}
-}
+}  // namespace s3dTiled

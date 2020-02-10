@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "../TiledSets/TiledSets.hpp"
 
@@ -31,7 +31,7 @@ namespace s3dTiled
 		// TODO renderorder
 
 		s3d::Array<TiledLayer> m_layers;
-		std::unordered_map<s3d::String, std::size_t> m_layerCache; // ƒŒƒCƒ„[‚Ö‚Ì–¼‘OŒŸõ‚ğO(1)‚É‚·‚é
+		std::unordered_map<s3d::String, std::size_t> m_layerCache; // ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¸ã®åå‰æ¤œç´¢ã‚’O(1)ã«ã™ã‚‹
 
 	public:
 		CTiledMap(const s3d::Size& mapSize, const s3d::Size& tileSize);
@@ -43,4 +43,4 @@ namespace s3dTiled
 		void setProps(TiledProperties&& props);
 		void addLayer(const TiledLayer& layer);
 	};
-}
+} // namespace s3dTiled

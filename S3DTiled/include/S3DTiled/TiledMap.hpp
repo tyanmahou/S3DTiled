@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "TiledTypes.hpp"
 
@@ -35,4 +35,4 @@ namespace s3dTiled
 
 		operator bool() const;
 	};
-}
+} // namespace s3dTiled

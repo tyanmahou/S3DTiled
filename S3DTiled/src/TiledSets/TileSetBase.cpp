@@ -1,4 +1,4 @@
-#include "TileSetBase.hpp"
+ï»¿#include "TileSetBase.hpp"
 
 #include <Siv3D/TextureRegion.hpp>
 using namespace s3d;
@@ -109,7 +109,7 @@ namespace s3dTiled
 	{
 		TileId tileId = gId - m_firstGId;
 		if (m_animations.find(tileId) != m_animations.end()) {
-			// ƒAƒjƒ[ƒVƒ‡ƒ“‚ª‚ ‚éê‡
+			// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãŒã‚ã‚‹å ´åˆ
 			tileId = m_animations.at(tileId).calcCurrentTileId();
 		}
 		int32 x = tileId % m_columns;
@@ -127,10 +127,10 @@ namespace s3dTiled
 	{
 		TileId tileId = gId - m_firstGId;
 		if (m_animations.find(tileId) != m_animations.end()) {
-			// ƒAƒjƒ[ƒVƒ‡ƒ“‚ª‚ ‚éê‡
+			// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãŒã‚ã‚‹å ´åˆ
 			tileId = m_animations.at(tileId).calcCurrentTileId();
 		}
 		return m_textures[tileId];
 	}
 
-}
+} // namespace s3dTiled

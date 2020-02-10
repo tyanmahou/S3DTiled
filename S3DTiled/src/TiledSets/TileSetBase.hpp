@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <S3DTiled/TiledTypes.hpp>
 #include <S3DTiled/TiledProperty.hpp>
@@ -57,7 +57,7 @@ namespace s3dTiled
 	};
 
 	/// <summary>
-	/// ‹Ïˆê‚Ìƒ^ƒCƒ‹ƒZƒbƒg
+	/// å‡ä¸€ã®ã‚¿ã‚¤ãƒ«ã‚»ãƒƒãƒˆ
 	/// </summary>
 	class UniformTileSet : public TileSetBase
 	{
@@ -74,7 +74,7 @@ namespace s3dTiled
 	};
 
 	/// <summary>
-	/// ƒoƒ‰ƒoƒ‰‚Ìƒ^ƒCƒ‹ƒZƒbƒg
+	/// ãƒãƒ©ãƒãƒ©ã®ã‚¿ã‚¤ãƒ«ã‚»ãƒƒãƒˆ
 	/// </summary>
 	class VariousTileSet : public TileSetBase
 	{
@@ -88,4 +88,4 @@ namespace s3dTiled
 		s3d::TextureRegion getTextureRegion(GId gId) override;
 	};
 
-}
+} // namespace s3dTiled

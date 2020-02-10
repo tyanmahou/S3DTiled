@@ -1,4 +1,4 @@
-#include "TiledReader.hpp"
+﻿#include "TiledReader.hpp"
 #include "TiledParser.hpp"
 #include "../TiledMap/CTiledMap.hpp"
 
@@ -57,4 +57,4 @@ namespace s3dTiled
 	{
 		return pImpl->m_map;
 	}
-}
+} // namespace s3dTiled

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include<Siv3D/Fwd.hpp>
 #include<Siv3D/Color.hpp>
@@ -6,7 +6,7 @@
 namespace s3dTiled
 {
 		/// <summary>
-		/// Tiled‚ÌƒvƒƒpƒeƒB
+		/// Tiledã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		/// </summary>
 		class TiledProperty
 		{
@@ -67,4 +67,4 @@ namespace s3dTiled
 			TiledProperty& operator =(const TiledProperty& other);
 			TiledProperty& operator =(TiledProperty&& other) noexcept;
 		};
-}
+} // namespace s3dTiled

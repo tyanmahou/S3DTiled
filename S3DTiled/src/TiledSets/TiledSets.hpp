@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <S3DTiled/TiledTypes.hpp>
 
@@ -20,4 +20,4 @@ namespace s3dTiled
 
 		s3d::Optional<TiledProperty> getProperty(GId gId, const s3d::String& key) const;
 	};
-}
+} // namespace s3dTiled

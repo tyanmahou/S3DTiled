@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "TiledTypes.hpp"
 #include "TiledProperty.hpp"
@@ -43,66 +43,66 @@ namespace s3dTiled
 		explicit TiledLayer(std::shared_ptr<TiledLayerBase> layer);
 
 		/// <summary>
-		/// ƒŒƒCƒ„[‚Ì•`‰æ
+		/// ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æç”»
 		/// </summary>
-		/// <param name="map">ƒ^ƒCƒ‹ƒ}ƒbƒv</param>
-		/// <param name="rect">•`‰æ—Ìˆæ</param>
-		/// <returns>true: ¬Œ÷ false:¸”s</returns>
+		/// <param name="map">ã‚¿ã‚¤ãƒ«ãƒãƒƒãƒ—</param>
+		/// <param name="rect">æç”»é ˜åŸŸ</param>
+		/// <returns>true: æˆåŠŸ false:å¤±æ•—</returns>
 		bool draw(const TiledMap& map, const s3d::Rect& rect) const;
 
 		/// <summary>
-		/// ƒŒƒCƒ„[ƒ^ƒCƒv‚ğæ“¾
+		/// ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚¿ã‚¤ãƒ—ã‚’å–å¾—
 		/// </summary>
 		/// <returns></returns>
 		LayerType getType() const;
 
 		/// <summary>
-		/// ƒŒƒCƒ„[‚Ì–¼‘O‚ğæ“¾
+		/// ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®åå‰ã‚’å–å¾—
 		/// </summary>
 		/// <returns></returns>
 		const s3d::String& getName() const;
 
 		/// <summary>
-		/// ƒvƒƒpƒeƒB‚ğæ“¾
+		/// ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—
 		/// </summary>
 		s3d::Optional<TiledProperty> getProperty(const s3d::String& key) const;
 
 		/// <summary>
-		/// •\¦‚Ì—L–³‚ğØ‚è‘Ö‚¦‚é
+		/// è¡¨ç¤ºã®æœ‰ç„¡ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
 		/// </summary>
 		void setVisible(bool visible);
 
 		/// <summary>
-		/// •\¦‚Ì—L–³‚ğæ“¾
+		/// è¡¨ç¤ºã®æœ‰ç„¡ã‚’å–å¾—
 		/// </summary>
 		bool getVisible() const;
 
 		/// <summary>
-		/// ƒŒƒCƒ„[ƒ^ƒCƒv‚ª ImageLayer‚Ìê‡‚ÉƒR[ƒ‹ƒoƒbƒN‚ğŒÄ‚Ô
+		/// ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚¿ã‚¤ãƒ—ãŒ ImageLayerã®å ´åˆã«ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚’å‘¼ã¶
 		/// </summary>
-		/// <param name="callback">ƒR[ƒ‹ƒoƒbƒN</param>
-		/// <returns>ƒR[ƒ‹ƒoƒbƒN‚ªŒÄ‚Î‚ê‚½‚çtrue</returns>
+		/// <param name="callback">ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯</param>
+		/// <returns>ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãŒå‘¼ã°ã‚ŒãŸã‚‰true</returns>
 		bool then(std::function<void(const ImageLayer&)> callback) const;
 
 		/// <summary>
-		/// ƒŒƒCƒ„[ƒ^ƒCƒv‚ª TileLayer ‚Ìê‡‚ÉƒR[ƒ‹ƒoƒbƒN‚ğŒÄ‚Ô
+		/// ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚¿ã‚¤ãƒ—ãŒ TileLayer ã®å ´åˆã«ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚’å‘¼ã¶
 		/// </summary>
-		/// <param name="callback">ƒR[ƒ‹ƒoƒbƒN</param>
-		/// <returns>ƒR[ƒ‹ƒoƒbƒN‚ªŒÄ‚Î‚ê‚½‚çtrue</returns>
+		/// <param name="callback">ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯</param>
+		/// <returns>ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãŒå‘¼ã°ã‚ŒãŸã‚‰true</returns>
 		bool then(std::function<void(const TileLayer&)> callback) const;
 
 		/// <summary>
-		/// ƒŒƒCƒ„[ƒ^ƒCƒv‚ª ObjectGroup ‚Ìê‡‚ÉƒR[ƒ‹ƒoƒbƒN‚ğŒÄ‚Ô
+		/// ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚¿ã‚¤ãƒ—ãŒ ObjectGroup ã®å ´åˆã«ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚’å‘¼ã¶
 		/// </summary>
-		/// <param name="callback">ƒR[ƒ‹ƒoƒbƒN</param>
-		/// <returns>ƒR[ƒ‹ƒoƒbƒN‚ªŒÄ‚Î‚ê‚½‚çtrue</returns>
+		/// <param name="callback">ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯</param>
+		/// <returns>ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãŒå‘¼ã°ã‚ŒãŸã‚‰true</returns>
 		bool then(std::function<void(const ObjectGroup&)> callback) const;
 
 		/// <summary>
-		/// ƒŒƒCƒ„[ƒ^ƒCƒv‚ª GroupLayer ‚Ìê‡‚ÉƒR[ƒ‹ƒoƒbƒN‚ğŒÄ‚Ô
+		/// ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚¿ã‚¤ãƒ—ãŒ GroupLayer ã®å ´åˆã«ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚’å‘¼ã¶
 		/// </summary>
-		/// <param name="callback">ƒR[ƒ‹ƒoƒbƒN</param>
-		/// <returns>ƒR[ƒ‹ƒoƒbƒN‚ªŒÄ‚Î‚ê‚½‚çtrue</returns>
+		/// <param name="callback">ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯</param>
+		/// <returns>ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãŒå‘¼ã°ã‚ŒãŸã‚‰true</returns>
 		bool then(std::function<void(const GroupLayer&)> callback) const;
 	};
 
@@ -198,4 +198,4 @@ namespace s3dTiled
 
 		LayerType getType() const override;
 	};
-}
+} // namespace s3dTiled

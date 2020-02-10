@@ -1,4 +1,4 @@
-#include <S3DTiled/TiledMap.hpp>
+ï»¿#include <S3DTiled/TiledMap.hpp>
 #include <S3DTiled/TiledLayer.hpp>
 
 #include <Siv3D/TextureRegion.hpp>
@@ -149,7 +149,7 @@ namespace s3dTiled
 			return false;
 		}
 		if (!RectF(m_offset, m_texture.size()).intersects(rect)) {
-			// ”ÍˆÍŠO
+			// ç¯„å›²å¤–
 			return false;
 		}
 		m_texture.draw(m_offset);
@@ -195,7 +195,7 @@ namespace s3dTiled
 				}
 				auto&& texture = map.getTile(gId);
 				Vec2 pos = { x * tileSize.x, y * tileSize.y };
-				// À•W‚Ì’²®
+				// åº§æ¨™ã®èª¿æ•´
 				pos.y -= (texture.size.y - tileSize.y);
 
 				RectF drawRegion{ pos, texture.size };
@@ -235,7 +235,7 @@ namespace s3dTiled
 			if (obj.gId) {
 				auto&& texture = map.getTile(obj.gId.value());
 
-				// À•W‚Ì’²®
+				// åº§æ¨™ã®èª¿æ•´
 				Vec2 pos = obj.pos;
 				Vec2 offset{ texture.size.x / 2, -+texture.size.y / 2 };
 				pos += offset;
@@ -246,7 +246,7 @@ namespace s3dTiled
 				auto&& textureQuad = texture.rotated(rad);
 				auto drawRegion = textureQuad.quad.movedBy(pos - textureQuad.center);
 				if (!rect.intersects(drawRegion)) {
-					// ”ÍˆÍŠO
+					// ç¯„å›²å¤–
 					continue;
 				}
 				textureQuad.drawAt(pos);
@@ -278,4 +278,4 @@ namespace s3dTiled
 	{
 		return LayerType::GroupLayer;
 	}
-}
+} // namespace s3dTiled

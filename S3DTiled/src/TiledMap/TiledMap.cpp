@@ -1,4 +1,4 @@
-
+﻿
 #include "../Parser/TiledReader.hpp"
 #include "CTiledMap.hpp"
 
@@ -102,4 +102,4 @@ namespace s3dTiled
 	{
 		return static_cast<bool>(pImpl);
 	}
-}
+} // namespace s3dTiled

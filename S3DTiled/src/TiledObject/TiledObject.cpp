@@ -1,4 +1,4 @@
-#include <S3DTiled/TiledObject.hpp>
+﻿#include <S3DTiled/TiledObject.hpp>
 
 namespace s3dTiled
 {
@@ -19,4 +19,4 @@ namespace s3dTiled
 	{
 		return std::get<s3d::RectF>(shape).movedBy(pos);
 	}
-}
+} // namespace s3dTiled
