@@ -15,7 +15,7 @@ namespace
     using namespace s3d;
 	using namespace s3dTiled;
 
-	s3d::Color ParseTiledColor(const s3d::String& str)
+	Color ParseTiledColor(const String& str)
 	{
 		bool noneAlpha = str.length() <= 7;
 		if (noneAlpha) {
@@ -34,7 +34,7 @@ namespace
 	public:
 		TmxParser() = default;
 
-		std::shared_ptr<CTiledMap> parse(const s3d::FilePath& path)
+		std::shared_ptr<CTiledMap> parse(const FilePath& path)
 		{
 			XMLReader root(static_cast<FilePathView>(path));
 			if (!root) {
@@ -267,8 +267,7 @@ namespace
 				if (this->tryParseShape(elm, obj.shape, size))
 				{
 					isRect = false;
-				}
-				else if (elm.name() == U"properties") {
+				} else if (elm.name() == U"properties") {
 					obj.setProps(this->parseProps(elm));
 				}
 			}
@@ -319,8 +318,7 @@ namespace
 			for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
 				if (elm.name() == U"animation") {
 					tileSet->addAnimation(tileId, this->parseAnimation(elm));
-				}
-				else if (elm.name() == U"properties") {
+				} else if (elm.name() == U"properties") {
 					tileSet->addProps(tileId, this->parseProps(elm));
 				}
 			}
@@ -338,7 +336,7 @@ namespace
 			for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
 				if (elm.name() == U"image") {
 					tileSet->setTexture(Texture(this->m_parentPath + elm.attribute(U"source").value_or(U"")));
-				}else if (elm.name() == U"tile") {
+				} else if (elm.name() == U"tile") {
 					TileId tileId = Parse<TileId>(elm.attribute(U"id").value_or(U"0"));
 					this->tryParseTileInfo(tileSet.get(), tileId, elm);
 				}

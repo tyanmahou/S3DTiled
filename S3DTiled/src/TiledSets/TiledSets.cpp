@@ -37,12 +37,12 @@ namespace s3dTiled
 		pImpl(std::make_shared<CTiledSets>())
 	{}
 
-	s3d::TextureRegion TiledSets::getTile(GId gId) const
+	TextureRegion TiledSets::getTile(GId gId) const
 	{
 		return pImpl->getTileSet(gId)->getTextureRegion(gId);
 	}
 
-	s3d::Optional<TiledProperty> TiledSets::getProperty(GId gId, const s3d::String& key) const
+	Optional<TiledProperty> TiledSets::getProperty(GId gId, const String& key) const
 	{
 		return pImpl->getTileSet(gId)->getProperty(gId, key);
 	}

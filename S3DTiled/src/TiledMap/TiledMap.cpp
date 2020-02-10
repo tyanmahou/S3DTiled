@@ -17,7 +17,7 @@ namespace s3dTiled
 {
     using namespace s3d;
 
-	TiledMap::TiledMap(const s3d::FilePath& path, TiledFileType fileType)
+	TiledMap::TiledMap(const FilePath& path, TiledFileType fileType)
 	{
 		TiledReader reader(path, fileType);
 		if (!reader) {
@@ -26,7 +26,7 @@ namespace s3dTiled
 		this->pImpl = reader.getTiledMap();
 	}
 
-	bool TiledMap::open(const s3d::FilePath& path, TiledFileType fileType)
+	bool TiledMap::open(const FilePath& path, TiledFileType fileType)
 	{
 		TiledReader reader(path, fileType);
 		if (!reader) {
@@ -36,43 +36,43 @@ namespace s3dTiled
 		return true;
 	}
 
-	const s3d::Size& TiledMap::getMapSize() const
+	const Size& TiledMap::getMapSize() const
 	{
 		return pImpl->m_mapSize;
 	}
 
-	const s3d::Size& TiledMap::getTileSize() const
+	const Size& TiledMap::getTileSize() const
 	{
 		return pImpl->m_tileSize;
 	}
 
-	s3d::Optional<TiledProperty> TiledMap::getProperty(const s3d::String& key) const
+	Optional<TiledProperty> TiledMap::getProperty(const String& key) const
 	{
 		if (this->pImpl->m_props.find(key) != this->pImpl->m_props.end()) {
 			return this->pImpl->m_props.at(key);
 		}
-		return s3d::none;
+		return none;
 	}
 
-	s3d::Optional<TiledLayer> TiledMap::getLayer(const s3d::String& name) const
+	Optional<TiledLayer> TiledMap::getLayer(const String& name) const
 	{
 		if (pImpl->m_layerCache.find(name) == pImpl->m_layerCache.end()) {
-			return s3d::none;
+			return none;
 		}
 		return pImpl->m_layers[pImpl->m_layerCache.at(name)];
 	}
 
-	s3d::TextureRegion TiledMap::getTile(GId gId) const
+	TextureRegion TiledMap::getTile(GId gId) const
 	{
 		return pImpl->m_tiledSets.getTile(gId);
 	}
 
-	s3d::Optional<TiledProperty> TiledMap::getTileProperty(GId gId, const s3d::String& key) const
+	Optional<TiledProperty> TiledMap::getTileProperty(GId gId, const String& key) const
 	{
 		return pImpl->m_tiledSets.getProperty(gId, key);
 	}
 
-	bool TiledMap::drawLayer(const s3d::String& name, const s3d::Rect& rect) const
+	bool TiledMap::drawLayer(const String& name, const Rect& rect) const
 	{
 		auto&& layer = this->getLayer(name);
 		if (!layer) {
@@ -82,7 +82,7 @@ namespace s3dTiled
 		return layer->draw(*this, rect);
 	}
 
-	void TiledMap::draw(const s3d::Rect& rect) const
+	void TiledMap::draw(const Rect& rect) const
 	{
 		pImpl->m_backGroundColor.then([&](Color bgColor) {
 			rect.draw(bgColor);

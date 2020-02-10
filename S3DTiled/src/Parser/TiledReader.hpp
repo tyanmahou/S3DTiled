@@ -1,11 +1,11 @@
 ﻿#pragma once
 
+#include<memory>
+
 #include<S3DTiled/TiledTypes.hpp>
 
 #include<Siv3D/Fwd.hpp>
 #include<Siv3D/Optional.hpp>
-
-#include<memory>
 
 namespace s3dTiled
 {

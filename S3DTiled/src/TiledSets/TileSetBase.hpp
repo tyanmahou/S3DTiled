@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+#include <utility>
+#include <unordered_map>
+
 #include <S3DTiled/TiledTypes.hpp>
 #include <S3DTiled/TiledProperty.hpp>
 

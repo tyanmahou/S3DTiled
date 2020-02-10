@@ -1,8 +1,7 @@
 ﻿#pragma once
 
-#include <Siv3D/Fwd.hpp>
-
 #include <memory>
+#include <Siv3D/Fwd.hpp>
 
 namespace s3dTiled
 {
