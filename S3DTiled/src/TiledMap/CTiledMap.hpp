@@ -27,8 +27,8 @@ namespace s3dTiled
 		s3d::Size m_tileSize;
 
 		s3d::Optional<s3d::Color> m_backGroundColor;
-		// TODO orientation
-		// TODO renderorder
+		// TODO(@tyanmahou): orientation
+		// TODO(@tyanmahou): renderorder
 
 		s3d::Array<TiledLayer> m_layers;
 		std::unordered_map<s3d::String, std::size_t> m_layerCache; // レイヤーへの名前検索をO(1)にする
