@@ -33,6 +33,7 @@ namespace s3dTiled
 		s3d::Array<TiledLayer> m_layers;
 		std::unordered_map<s3d::String, std::size_t> m_layerCache; // レイヤーへの名前検索をO(1)にする
 
+		std::unordered_map<s3d::FilePath, s3d::Texture> m_textures;
 	public:
 		CTiledMap(const s3d::Size& mapSize, const s3d::Size& tileSize);
 
@@ -44,5 +45,7 @@ namespace s3dTiled
 		void addLayer(const TiledLayer& layer);
 
 		const TiledSets& getTiledSets() const;
+
+		const s3d::Texture& loadTexture(const s3d::FilePath& imagePath);
 	};
 } // namespace s3dTiled

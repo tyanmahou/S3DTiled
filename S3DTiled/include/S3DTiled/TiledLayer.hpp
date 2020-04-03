@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <memory>
 #include <functional>
@@ -137,10 +137,11 @@ namespace s3dTiled
 	class ImageLayer : public TiledLayerBase
 	{
 	private:
-		s3d::Texture m_texture;
+		s3d::FilePath m_image;
 	public:
-		void setTexture(s3d::Texture texture);
-		const s3d::Texture& getTexture() const;
+		void setImagePath(const s3d::FilePath& image);
+		const s3d::FilePath& getImagePath()const;
+		s3d::Texture createTexture() const;
 
 		bool draw(const TiledMap& map, const s3d::Rect& rect) const override;
 		LayerType getType() const override;

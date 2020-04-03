@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <memory>
 
@@ -34,5 +34,7 @@ namespace s3dTiled
 		bool drawLayer(const s3d::String& name, const s3d::Rect& rect) const;
 
 		operator bool() const;
+
+		const s3d::Texture& loadTexture(const s3d::FilePath& imagePath) const;
 	};
 } // namespace s3dTiled

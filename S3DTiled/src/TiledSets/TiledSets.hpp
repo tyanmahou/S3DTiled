@@ -6,6 +6,7 @@
 namespace s3dTiled
 {
 	class TileSetBase;
+	class TiledMap;
 
 	class TiledSets
 	{
@@ -15,7 +16,7 @@ namespace s3dTiled
 		TiledSets();
 
 		void addTileSet(std::unique_ptr<TileSetBase>&& tileSet) const;
-		s3d::TextureRegion getTile(GId gId) const;
+		s3d::TextureRegion getTile(GId gId, const TiledMap& map) const;
 
 		const TiledProperties& getProperties(GId gId) const;
 		s3d::Optional<TiledProperty> getProperty(GId gId, const s3d::String& key) const;

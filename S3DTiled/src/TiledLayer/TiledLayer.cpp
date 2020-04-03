@@ -135,26 +135,32 @@ namespace s3dTiled
 
 	// ImageLayer
 
-	void ImageLayer::setTexture(Texture texture)
+	void ImageLayer::setImagePath(const s3d::FilePath& image)
 	{
-		m_texture = texture;
+		m_image = image;
 	}
 
-	const Texture& ImageLayer::getTexture() const
+	const s3d::FilePath& ImageLayer::getImagePath() const
 	{
-		return m_texture;
+		return m_image;
 	}
 
-	bool ImageLayer::draw(const TiledMap& /*map*/, const Rect& rect) const
+	s3d::Texture ImageLayer::createTexture() const
+	{
+		return s3d::Texture(m_image);
+	}
+
+	bool ImageLayer::draw(const TiledMap& map, const Rect& rect) const
 	{
 		if (!m_visible) {
 			return false;
 		}
-		if (!RectF(m_offset, m_texture.size()).intersects(rect)) {
+		const auto& texture = map.loadTexture(m_image);
+		if (!RectF(m_offset, texture.size()).intersects(rect)) {
 			// 範囲外
 			return false;
 		}
-		m_texture.draw(m_offset);
+		texture.draw(m_offset);
 
 		return true;
 	}

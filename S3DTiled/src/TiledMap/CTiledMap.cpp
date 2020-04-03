@@ -39,4 +39,11 @@ namespace s3dTiled
 	{
 		return m_tiledSets;
 	}
+    const s3d::Texture& CTiledMap::loadTexture(const s3d::FilePath& imagePath)
+    {
+		if (m_textures.find(imagePath) != m_textures.end()) {
+			return m_textures[imagePath];
+		}
+		return m_textures[imagePath] = s3d::Texture(imagePath);
+    }
 } // namespace s3dTiled

@@ -13,6 +13,8 @@
 
 namespace s3dTiled
 {
+	class TiledMap;
+
 	/// <summary>
 	/// TiledAnimation
 	/// </summary>
@@ -58,7 +60,7 @@ namespace s3dTiled
 
 		bool isContain(GId gId) const;
 
-		virtual s3d::TextureRegion getTextureRegion(GId gId) = 0;
+		virtual s3d::TextureRegion getTextureRegion(GId gId, const TiledMap& map) = 0;
 	};
 
 	/// <summary>
@@ -68,14 +70,14 @@ namespace s3dTiled
 	{
 	private:
 		s3d::Size m_tileSize;
-		s3d::Texture m_texture;
+		s3d::FilePath m_image;
 	public:
 		UniformTileSet() = default;
 
 		void setTileSize(const s3d::Size& tileSize);
-		void setTexture(const s3d::Texture& texture);
+		void setImagePath(const s3d::FilePath& image);
 
-		s3d::TextureRegion getTextureRegion(GId gId) override;
+		s3d::TextureRegion getTextureRegion(GId gId, const TiledMap& map) override;
 	};
 
 	/// <summary>
@@ -84,13 +86,13 @@ namespace s3dTiled
 	class VariousTileSet : public TileSetBase
 	{
 	private:
-		std::unordered_map<TileId, s3d::Texture> m_textures;
+		std::unordered_map<TileId, s3d::FilePath> m_images;
 	public:
 		VariousTileSet() = default;
 
-		void addTexture(TileId tileId, const s3d::Texture& texture);
+		void addImagePath(TileId tileId, const s3d::FilePath& image);
 
-		s3d::TextureRegion getTextureRegion(GId gId) override;
+		s3d::TextureRegion getTextureRegion(GId gId, const TiledMap& map) override;
 	};
 
 } // namespace s3dTiled

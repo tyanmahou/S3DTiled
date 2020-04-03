@@ -105,7 +105,7 @@ namespace
 
 			for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
 				if (elm.name() == U"image") {
-					layer->setTexture(Texture(this->m_parentPath + elm.attribute(U"source").value_or(U"")));
+					layer->setImagePath(this->m_parentPath + elm.attribute(U"source").value_or(U""));
 				} else if (elm.name() == U"properties") {
 					layer->setProps(this->parseProps(elm));
 				}
@@ -352,7 +352,7 @@ namespace
 
 			for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
 				if (elm.name() == U"image") {
-					tileSet->setTexture(Texture(this->m_parentPath + elm.attribute(U"source").value_or(U"")));
+					tileSet->setImagePath(this->m_parentPath + elm.attribute(U"source").value_or(U""));
 				} else if (elm.name() == U"tile") {
 					TileId tileId = Parse<TileId>(elm.attribute(U"id").value_or(U"0"));
 					this->tryParseTileInfo(tileSet.get(), tileId, elm);
@@ -374,7 +374,7 @@ namespace
 
 					for (auto image = elm.firstChild(); image; image = image.nextSibling()) {
 						if (image.name() == U"image") {
-							tileSet->addTexture(tileId, Texture(this->m_parentPath + image.attribute(U"source").value_or(U"")));
+							tileSet->addImagePath(tileId, this->m_parentPath + image.attribute(U"source").value_or(U""));
 							break;
 						}
 					}

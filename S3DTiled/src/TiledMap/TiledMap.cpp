@@ -1,4 +1,4 @@
-﻿
+
 #include "../Parser/TiledReader.hpp"
 #include "CTiledMap.hpp"
 
@@ -64,7 +64,7 @@ namespace s3dTiled
 
 	TextureRegion TiledMap::getTile(GId gId) const
 	{
-		return pImpl->m_tiledSets.getTile(gId);
+		return pImpl->m_tiledSets.getTile(gId, *this);
 	}
 
 	Optional<TiledProperty> TiledMap::getTileProperty(GId gId, const String& key) const
@@ -101,5 +101,9 @@ namespace s3dTiled
 	TiledMap::operator bool() const
 	{
 		return static_cast<bool>(pImpl);
+	}
+	const s3d::Texture& TiledMap::loadTexture(const s3d::FilePath& imagePath) const
+	{
+		return pImpl->loadTexture(imagePath);
 	}
 } // namespace s3dTiled

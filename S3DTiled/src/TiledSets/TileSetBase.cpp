@@ -1,5 +1,5 @@
 #include "TileSetBase.hpp"
-
+#include <S3DTiled/TiledMap.hpp>
 #include <Siv3D/TextureRegion.hpp>
 
 namespace s3dTiled
@@ -103,12 +103,12 @@ namespace s3dTiled
 		this->m_tileSize = tileSize;
 	}
 
-	void UniformTileSet::setTexture(const s3d::Texture& texture)
+	void UniformTileSet::setImagePath(const s3d::FilePath& image)
 	{
-		m_texture = texture;
+		m_image = image;
 	}
 
-	s3d::TextureRegion UniformTileSet::getTextureRegion(GId gId)
+	s3d::TextureRegion UniformTileSet::getTextureRegion(GId gId, const TiledMap& map)
 	{
 		TileId tileId = gId - m_firstGId;
 		if (m_animations.find(tileId) != m_animations.end()) {
@@ -117,23 +117,24 @@ namespace s3dTiled
 		}
 		int32 x = tileId % m_columns;
 		int32 y = tileId / m_columns;
-		return m_texture({ m_tileSize.x * x, m_tileSize.y * y }, m_tileSize);
+		const auto& texture = map.loadTexture(m_image);
+		return texture({ m_tileSize.x * x, m_tileSize.y * y }, m_tileSize);
 	}
 
-	void VariousTileSet::addTexture(TileId tileId, const s3d::Texture& texture)
+	void VariousTileSet::addImagePath(TileId tileId, const s3d::FilePath& image)
 	{
-		this->m_textures.emplace(tileId, texture);
+		this->m_images.emplace(tileId, image);
 		this->m_tileCount = Max(m_tileCount, tileId + 1u);
 	}
 
-	s3d::TextureRegion VariousTileSet::getTextureRegion(GId gId)
+	s3d::TextureRegion VariousTileSet::getTextureRegion(GId gId, const TiledMap& map)
 	{
 		TileId tileId = gId - m_firstGId;
 		if (m_animations.find(tileId) != m_animations.end()) {
 			// アニメーションがある場合
 			tileId = m_animations.at(tileId).calcCurrentTileId();
 		}
-		return m_textures[tileId];
+		return map.loadTexture(m_images[tileId]);
 	}
 
 } // namespace s3dTiled
