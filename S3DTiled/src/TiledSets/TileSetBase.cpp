@@ -1,4 +1,4 @@
-﻿#include "TileSetBase.hpp"
+#include "TileSetBase.hpp"
 
 #include <Siv3D/TextureRegion.hpp>
 
@@ -63,14 +63,16 @@ namespace s3dTiled
 		m_props.emplace(tileId, std::move(props));
 	}
 
-	s3d::Optional<TiledProperty> TileSetBase::getProperty(GId gId, const s3d::String& key) const
-	{
+    const TiledProperties& TileSetBase::getProperties(GId gId)
+    {
 		TileId tileId = gId - m_firstGId;
 
-		if (m_props.find(tileId) == m_props.end()) {
-			return s3d::none;
-		}
-		const auto& props = m_props.at(tileId);
+		return  m_props[tileId];
+	}
+
+    s3d::Optional<TiledProperty> TileSetBase::getProperty(GId gId, const s3d::String& key)
+	{
+		const auto& props = this->getProperties(gId);
 
 		if (props.find(key) == props.end()) {
 			return s3d::none;

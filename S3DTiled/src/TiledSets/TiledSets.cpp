@@ -1,4 +1,4 @@
-﻿#include "TiledSets.hpp"
+#include "TiledSets.hpp"
 #include "TileSetBase.hpp"
 
 #include <Siv3D/TextureRegion.hpp>
@@ -42,7 +42,12 @@ namespace s3dTiled
 		return pImpl->getTileSet(gId)->getTextureRegion(gId);
 	}
 
-	Optional<TiledProperty> TiledSets::getProperty(GId gId, const String& key) const
+    const TiledProperties& TiledSets::getProperties(GId gId) const
+    {
+		return pImpl->getTileSet(gId)->getProperties(gId);
+    }
+
+    Optional<TiledProperty> TiledSets::getProperty(GId gId, const String& key) const
 	{
 		return pImpl->getTileSet(gId)->getProperty(gId, key);
 	}

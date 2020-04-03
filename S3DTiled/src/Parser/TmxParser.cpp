@@ -1,4 +1,4 @@
-﻿#include "TiledParser.hpp"
+#include "TiledParser.hpp"
 #include "../TiledSets/TileSetBase.hpp"
 #include "../TiledMap/CTiledMap.hpp"
 
@@ -30,7 +30,7 @@ namespace
 	class TmxParser
 	{
 		FilePath m_parentPath;
-
+		std::shared_ptr<CTiledMap> m_map;
 	public:
 		TmxParser() = default;
 
@@ -51,24 +51,24 @@ namespace
 				Parse<int32>(root.attribute(U"tilewidth").value_or(U"0")),
 				Parse<int32>(root.attribute(U"tileheight").value_or(U"0"))
 			};
-			auto map = std::make_shared<CTiledMap>(mapSize, tileSize);
+			m_map = std::make_shared<CTiledMap>(mapSize, tileSize);
 
 			if (auto && col = root.attribute(U"backgroundcolor")) {
-				map->setBackGroundColor(ParseTiledColor(root.attribute(U"backgroundcolor").value()));
+				m_map->setBackGroundColor(ParseTiledColor(root.attribute(U"backgroundcolor").value()));
 			}
 
 			for (auto elm = root.firstChild(); elm; elm = elm.nextSibling()) {
 				if (auto && layer = this->tryParseLayer(elm)) {
-					map->addLayer(TiledLayer(layer));
+					m_map->addLayer(TiledLayer(layer));
 				} else if (auto && tileSet = this->tryTileSet(elm)) {
-					map->addTileSet(std::move(tileSet));
+					m_map->addTileSet(std::move(tileSet));
 				} else if (elm.name() == U"properties") {
-					map->setProps(this->parseProps(elm));
+					m_map->setProps(this->parseProps(elm));
 				}
 
 			}
 
-			return map;
+			return m_map;
 		}
 	private:
 		std::shared_ptr<TiledLayerBase> tryParseLayer(const XMLElement& xml)
@@ -90,7 +90,7 @@ namespace
 		{
 			// common
 			layer->setName(xml.attribute(U"name").value_or(U""));
-			layer->setVisible(Parse<bool>(xml.attribute(U"visible").value_or(U"true")));
+			layer->setVisible(static_cast<bool>(Parse<s3d::int32>(xml.attribute(U"visible").value_or(U"1"))));
 			layer->setOffset({
 				Parse<double>(xml.attribute(U"offsetx").value_or(U"0.0")),
 				Parse<double>(xml.attribute(U"offsety").value_or(U"0.0"))
@@ -245,6 +245,8 @@ namespace
 		TiledObject parseObject(const XMLElement& xml)
 		{
 			TiledObject obj;
+			TiledProperties props;
+
 			obj.id = Parse<uint32>(xml.attribute(U"id").value_or(U"0"));
 			obj.name = xml.attribute(U"name").value_or(U"");
 			obj.type = xml.attribute(U"type").value_or(U"");
@@ -254,13 +256,25 @@ namespace
 			};
 			obj.rotation = Parse<double>(xml.attribute(U"rotation").value_or(U"0"));
 			if (auto && gId = xml.attribute(U"gid")) {
-				// TODO(@tyanmahou): flip
-				obj.gId = Parse<GId>(xml.attribute(U"gid").value());
+				auto rawGId = Parse<GId>(xml.attribute(U"gid").value());
+
+				constexpr GId mirrorFlag = 0x80000000;
+				constexpr GId flipFlag = 0x40000000;
+
+				obj.isMirrored = rawGId & mirrorFlag;
+				obj.isFliped = rawGId & flipFlag;
+
+				auto fixedGId = rawGId & ~(mirrorFlag | flipFlag);
+				obj.gId = fixedGId;
+				// tile側のプロパティを引き継ぐ
+				props = m_map->getTiledSets().getProperties(*obj.gId);
 			}
 			Vec2 size{
 				Parse<double>(xml.attribute(U"width").value_or(U"0")),
 				Parse<double>(xml.attribute(U"height").value_or(U"0"))
 			};
+			 
+
 			//shape
 			bool isRect = true;
 			for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
@@ -268,12 +282,15 @@ namespace
 				{
 					isRect = false;
 				} else if (elm.name() == U"properties") {
-					obj.setProps(this->parseProps(elm));
+					for (auto&& [key, value] : this->parseProps(elm)) {
+						props[key] = value;
+					}
 				}
 			}
 			if (isRect) {
 				obj.shape = RectF({ 0,0 }, size);
 			}
+			obj.setProps(std::move(props));
 			return obj;
 		}
 

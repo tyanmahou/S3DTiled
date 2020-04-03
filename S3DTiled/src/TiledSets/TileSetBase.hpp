@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <utility>
 #include <unordered_map>
@@ -48,7 +48,9 @@ namespace s3dTiled
 
 		void addAnimation(TileId tileId, TiledAnimation&& animetion);
 		void addProps(TileId tileId, TiledProperties&& props);
-		s3d::Optional<TiledProperty> getProperty(GId gId, const s3d::String& key) const;
+
+		const TiledProperties& getProperties(GId gId);
+		s3d::Optional<TiledProperty> getProperty(GId gId, const s3d::String& key);
 
 		GId getFirstGId() const;
 

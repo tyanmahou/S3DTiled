@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include<memory>
 #include <S3DTiled/TiledTypes.hpp>
@@ -17,6 +17,7 @@ namespace s3dTiled
 		void addTileSet(std::unique_ptr<TileSetBase>&& tileSet) const;
 		s3d::TextureRegion getTile(GId gId) const;
 
+		const TiledProperties& getProperties(GId gId) const;
 		s3d::Optional<TiledProperty> getProperty(GId gId, const s3d::String& key) const;
 	};
 } // namespace s3dTiled

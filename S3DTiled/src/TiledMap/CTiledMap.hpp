@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "../TiledSets/TiledSets.hpp"
 
@@ -42,5 +42,7 @@ namespace s3dTiled
 		void addTileSet(std::unique_ptr<TileSetBase>&& tileSet);
 		void setProps(TiledProperties&& props);
 		void addLayer(const TiledLayer& layer);
+
+		const TiledSets& getTiledSets() const;
 	};
 } // namespace s3dTiled

@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include<Siv3D/Vector2D.hpp>
 #include<Siv3D/String.hpp>
@@ -20,7 +20,8 @@ namespace s3dTiled
 		TiledShape shape;
 		TiledProperties props;
 		s3d::Optional<GId> gId;
-
+		bool isMirrored = false;
+		bool isFliped = false;
 		void setProps(TiledProperties&& props);
 		s3d::Optional<TiledProperty> getProperty(const s3d::String& key) const;
 

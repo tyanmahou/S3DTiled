@@ -1,4 +1,4 @@
-﻿#include "CTiledMap.hpp"
+#include "CTiledMap.hpp"
 
 namespace s3dTiled
 {
@@ -34,5 +34,9 @@ namespace s3dTiled
 		m_layerCache[layer.getName()] = index;
 
 		m_layers.push_back(layer);
+	}
+	const TiledSets& CTiledMap::getTiledSets() const
+	{
+		return m_tiledSets;
 	}
 } // namespace s3dTiled

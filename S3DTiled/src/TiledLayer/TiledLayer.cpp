@@ -1,4 +1,4 @@
-﻿#include <S3DTiled/TiledMap.hpp>
+#include <S3DTiled/TiledMap.hpp>
 #include <S3DTiled/TiledLayer.hpp>
 
 #include <Siv3D/TextureRegion.hpp>
@@ -235,7 +235,9 @@ namespace s3dTiled
 		}
 		for (auto&& obj : m_objects) {
 			if (obj.gId) {
-				auto&& texture = map.getTile(obj.gId.value());
+				auto&& texture = map.getTile(obj.gId.value())
+					.mirrored(obj.isMirrored)
+					.flipped(obj.isFliped);
 
 				// 座標の調整
 				Vec2 pos = obj.pos;
