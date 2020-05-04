@@ -1,7 +1,11 @@
 #pragma once
 
 #include<memory>
+#include <Siv3D/Array.hpp>
+
 #include <S3DTiled/TiledTypes.hpp>
+#include <S3DTiled/TiledTile.hpp>
+#include <S3DTiled/TiledAnimationFrame.hpp>
 
 namespace s3dTiled
 {
@@ -20,5 +24,8 @@ namespace s3dTiled
 
 		const TiledProperties& getProperties(GId gId) const;
 		s3d::Optional<TiledProperty> getProperty(GId gId, const s3d::String& key) const;
+
+		s3d::Array<TiledTile> getTiles()const;
+		s3d::Array<TiledAnimationFrame> getAnimationFrames()const;
 	};
 } // namespace s3dTiled

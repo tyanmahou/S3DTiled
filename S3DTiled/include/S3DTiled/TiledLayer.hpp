@@ -57,6 +57,12 @@ namespace s3dTiled
 		LayerType getType() const;
 
 		/// <summary>
+		/// Idを取得
+		/// </summary>
+		/// <returns></returns>
+		s3d::uint32 getId() const;
+
+		/// <summary>
 		/// レイヤーの名前を取得
 		/// </summary>
 		/// <returns></returns>
@@ -109,6 +115,7 @@ namespace s3dTiled
 	class TiledLayerBase
 	{
 	protected:
+		s3d::int32 m_id;
 		s3d::String m_name;
 		s3d::Vec2 m_offset;
 		TiledProperties m_props;
@@ -124,6 +131,9 @@ namespace s3dTiled
 		bool getVisible() const;
 		void setProps(TiledProperties&& props);
 		s3d::Optional<TiledProperty> getProperty(const s3d::String& key) const;
+
+		void setId(s3d::uint32 id);
+		s3d::uint32 getId() const;
 
 		void setName(const s3d::String& name);
 		const s3d::String& getName() const;
@@ -189,10 +199,11 @@ namespace s3dTiled
 	{
 	private:
 		s3d::Array<TiledLayer> m_layers;
-
+		std::unordered_map<s3d::String, std::size_t> m_layerCache;
 	public:
 		GroupLayer() = default;
 		void addLayer(const TiledLayer& layer);
+		s3d::Optional<TiledLayer> getLayer(const s3d::String& name)const;
 		const s3d::Array<TiledLayer>&  getLayers() const;
 
 		bool draw(const TiledMap& map, const s3d::Rect& rect) const override;

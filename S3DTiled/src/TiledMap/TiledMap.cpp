@@ -106,4 +106,12 @@ namespace s3dTiled
 	{
 		return pImpl->loadTexture(imagePath);
 	}
+	s3d::Array<TiledTile> TiledMap::getTiles() const
+	{
+		return pImpl->getTiles();
+	}
+	s3d::Array<TiledAnimationFrame> TiledMap::getAnimationFrames() const
+	{
+		return pImpl->getAnimationFrames();
+	}
 } // namespace s3dTiled

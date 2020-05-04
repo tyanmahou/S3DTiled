@@ -36,6 +36,11 @@ namespace s3dTiled
 		return 0;
 	}
 
+	const s3d::Array<std::pair<TileId, TiledAnimation::Duration>>& TiledAnimation::getFrames() const
+	{
+		return m_frames;
+	}
+
 	// TileSetBase
 
 	void TileSetBase::setFirstGId(GId gId)
@@ -90,6 +95,22 @@ namespace s3dTiled
 		return m_tileCount;
 	}
 
+	s3d::Array<TiledAnimationFrame> TileSetBase::getAnimationFrames() const
+	{
+		s3d::Array<TiledAnimationFrame> ret;
+		for (auto&& [from, animation] : m_animations) {
+			TiledAnimationFrame frame;
+			frame.from= from + m_firstGId;
+			for (auto&& f : animation.getFrames()) {
+				frame.to = f.first + m_firstGId;
+				frame.duration = f.second;
+
+				ret.push_back(frame);
+			}
+		}
+		return ret.sort();
+	}
+
 	bool TileSetBase::isContain(GId gId) const
 	{
 		return m_firstGId <= gId && gId < m_firstGId + m_tileCount;
@@ -115,13 +136,31 @@ namespace s3dTiled
 			// アニメーションがある場合
 			tileId = m_animations.at(tileId).calcCurrentTileId();
 		}
-		int32 x = tileId % m_columns;
-		int32 y = tileId / m_columns;
+		uint32 x = tileId % m_columns;
+		uint32 y = tileId / m_columns;
 		const auto& texture = map.loadTexture(m_image);
 		return texture({ m_tileSize.x * x, m_tileSize.y * y }, m_tileSize);
 	}
 
-	void VariousTileSet::addImagePath(TileId tileId, const s3d::FilePath& image)
+	s3d::Array<TiledTile> UniformTileSet::getTiles() const
+	{
+		s3d::Array<TiledTile> ret;
+		for (TileId tileId = 0; tileId < m_tileCount; ++tileId) {
+			uint32 x = tileId % m_columns;
+			uint32 y = tileId / m_columns;
+
+			ret.push_back(TiledTile{
+				.gId = m_firstGId + tileId,
+				.image = m_image,
+				.offset = { m_tileSize.x * x, m_tileSize.y * y },
+				.size = m_tileSize,
+			});
+		}
+
+		return ret;
+	}
+
+	void VariousTileSet::addImagePath(TileId tileId, const TiledImage& image)
 	{
 		this->m_images.emplace(tileId, image);
 		this->m_tileCount = Max(m_tileCount, tileId + 1u);
@@ -134,7 +173,22 @@ namespace s3dTiled
 			// アニメーションがある場合
 			tileId = m_animations.at(tileId).calcCurrentTileId();
 		}
-		return map.loadTexture(m_images[tileId]);
+		return map.loadTexture(m_images[tileId].source);
+	}
+
+	s3d::Array<TiledTile> VariousTileSet::getTiles() const
+	{
+		s3d::Array<TiledTile> ret;
+		for (auto&& [tileId, image] : m_images) {
+			ret.push_back(TiledTile{
+				.gId = m_firstGId + tileId,
+				.image = image.source,
+				.offset = Vec2::Zero(),
+				.size = image.size,
+			});
+		}
+
+		return ret.sort();
 	}
 
 } // namespace s3dTiled

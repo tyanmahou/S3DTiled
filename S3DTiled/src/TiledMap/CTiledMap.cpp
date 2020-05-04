@@ -46,4 +46,12 @@ namespace s3dTiled
 		}
 		return m_textures[imagePath] = s3d::Texture(imagePath);
     }
+    s3d::Array<TiledTile> CTiledMap::getTiles() const
+    {
+		return m_tiledSets.getTiles();
+    }
+	s3d::Array<TiledAnimationFrame> CTiledMap::getAnimationFrames() const
+	{
+		return m_tiledSets.getAnimationFrames();
+	}
 } // namespace s3dTiled

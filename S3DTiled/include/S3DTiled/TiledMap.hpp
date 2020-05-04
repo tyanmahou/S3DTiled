@@ -1,7 +1,10 @@
 #pragma once
 
 #include <memory>
+#include <Siv3D/Array.hpp>
 
+#include "TiledAnimationFrame.hpp"
+#include "TiledTile.hpp"
 #include "TiledTypes.hpp"
 
 namespace s3dTiled
@@ -36,5 +39,8 @@ namespace s3dTiled
 		operator bool() const;
 
 		const s3d::Texture& loadTexture(const s3d::FilePath& imagePath) const;
+
+		s3d::Array<TiledTile> getTiles()const;
+		s3d::Array<TiledAnimationFrame> getAnimationFrames()const;
 	};
 } // namespace s3dTiled

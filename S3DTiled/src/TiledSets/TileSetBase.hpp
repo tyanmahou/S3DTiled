@@ -3,6 +3,8 @@
 #include <utility>
 #include <unordered_map>
 
+#include <S3DTiled/TiledTile.hpp>
+#include <S3DTiled/TiledAnimationFrame.hpp>
 #include <S3DTiled/TiledTypes.hpp>
 #include <S3DTiled/TiledProperty.hpp>
 
@@ -15,6 +17,11 @@ namespace s3dTiled
 {
 	class TiledMap;
 
+	struct TiledImage
+	{
+		s3d::FilePath source;
+		s3d::Vec2 size;
+	};
 	/// <summary>
 	/// TiledAnimation
 	/// </summary>
@@ -32,6 +39,8 @@ namespace s3dTiled
 
 		void addFrame(TileId tileId, Duration duration);
 		TileId calcCurrentTileId();
+
+		const s3d::Array<std::pair<TileId, Duration>>& getFrames() const;
 	};
 
 	class TileSetBase
@@ -57,10 +66,13 @@ namespace s3dTiled
 		GId getFirstGId() const;
 
 		s3d::uint32 getTileCount() const;
+		s3d::Array<TiledAnimationFrame> getAnimationFrames()const;
 
 		bool isContain(GId gId) const;
 
 		virtual s3d::TextureRegion getTextureRegion(GId gId, const TiledMap& map) = 0;
+
+		virtual s3d::Array<TiledTile> getTiles()const = 0;
 	};
 
 	/// <summary>
@@ -78,6 +90,7 @@ namespace s3dTiled
 		void setImagePath(const s3d::FilePath& image);
 
 		s3d::TextureRegion getTextureRegion(GId gId, const TiledMap& map) override;
+		s3d::Array<TiledTile> getTiles()const override;
 	};
 
 	/// <summary>
@@ -86,13 +99,15 @@ namespace s3dTiled
 	class VariousTileSet : public TileSetBase
 	{
 	private:
-		std::unordered_map<TileId, s3d::FilePath> m_images;
+
+		std::unordered_map<TileId, TiledImage> m_images;
 	public:
 		VariousTileSet() = default;
 
-		void addImagePath(TileId tileId, const s3d::FilePath& image);
+		void addImagePath(TileId tileId, const TiledImage& image);
 
 		s3d::TextureRegion getTextureRegion(GId gId, const TiledMap& map) override;
+		s3d::Array<TiledTile> getTiles()const override;
 	};
 
 } // namespace s3dTiled

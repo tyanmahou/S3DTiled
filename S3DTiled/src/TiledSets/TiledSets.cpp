@@ -31,6 +31,22 @@ namespace s3dTiled
 			return m_tileSets[m_gIdTileIndexMap.at(gId)].get();
 		}
 
+		s3d::Array<TiledTile> getTiles() const
+		{
+			s3d::Array<TiledTile> ret;
+			for (const auto& tileSet : m_tileSets) {
+				ret.append(tileSet->getTiles());
+			}
+			return ret;
+		}
+		s3d::Array<TiledAnimationFrame> getAnimationFrames() const
+		{
+			s3d::Array<TiledAnimationFrame> ret;
+			for (const auto& tileSet : m_tileSets) {
+				ret.append(tileSet->getAnimationFrames());
+			}
+			return ret;
+		}
 	};
 
 	TiledSets::TiledSets():
@@ -50,6 +66,16 @@ namespace s3dTiled
     Optional<TiledProperty> TiledSets::getProperty(GId gId, const String& key) const
 	{
 		return pImpl->getTileSet(gId)->getProperty(gId, key);
+	}
+
+	s3d::Array<TiledTile> TiledSets::getTiles() const
+	{
+		return pImpl->getTiles();
+	}
+
+	s3d::Array<TiledAnimationFrame> TiledSets::getAnimationFrames() const
+	{
+		return pImpl->getAnimationFrames();
 	}
 
 	void TiledSets::addTileSet(std::unique_ptr<TileSetBase>&& tileSet) const

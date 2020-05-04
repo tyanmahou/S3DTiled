@@ -89,6 +89,7 @@ namespace
 		void parseLayerCommon(TiledLayerBase* layer, const XMLElement& xml)
 		{
 			// common
+			layer->setId(Parse<s3d::uint32>(xml.attribute(U"id").value_or(U"0")));
 			layer->setName(xml.attribute(U"name").value_or(U""));
 			layer->setVisible(static_cast<bool>(Parse<s3d::int32>(xml.attribute(U"visible").value_or(U"1"))));
 			layer->setOffset({
@@ -374,7 +375,13 @@ namespace
 
 					for (auto image = elm.firstChild(); image; image = image.nextSibling()) {
 						if (image.name() == U"image") {
-							tileSet->addImagePath(tileId, this->m_parentPath + image.attribute(U"source").value_or(U""));
+							TiledImage tiledImage;
+							tiledImage.size = Vec2{
+								Parse<double>(image.attribute(U"width").value_or(U"0")),
+								Parse<double>(image.attribute(U"height").value_or(U"0"))
+							};
+							tiledImage.source = this->m_parentPath + image.attribute(U"source").value_or(U"");
+							tileSet->addImagePath(tileId, tiledImage);
 							break;
 						}
 					}

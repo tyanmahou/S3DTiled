@@ -28,6 +28,11 @@ namespace s3dTiled
 		return this->pImpl->getType();
 	}
 
+    s3d::uint32 TiledLayer::getId() const
+    {
+        return this->pImpl->getId();
+    }
+
 	const String& TiledLayer::getName() const
 	{
 		return this->pImpl->getName();
@@ -115,6 +120,14 @@ namespace s3dTiled
 		}
 		return none;
 	}
+    void TiledLayerBase::setId(s3d::uint32 id)
+    {
+		m_id = id;
+	}
+    s3d::uint32 TiledLayerBase::getId() const
+    {
+		return m_id;
+    }
 	void TiledLayerBase::setName(const String& name)
 	{
 		this->m_name = name;
@@ -271,7 +284,17 @@ namespace s3dTiled
 	}
 	void GroupLayer::addLayer(const TiledLayer& layer)
 	{
+		std::size_t index = m_layers.size();
+		m_layerCache[layer.getName()] = index;
+
 		m_layers.push_back(layer);
+	}
+	s3d::Optional<TiledLayer> GroupLayer::getLayer(const s3d::String& name) const
+	{
+		if (m_layerCache.find(name) == m_layerCache.end()) {
+			return none;
+		}
+		return m_layers[m_layerCache.at(name)];
 	}
 	const Array<TiledLayer>& GroupLayer::getLayers() const
 	{
