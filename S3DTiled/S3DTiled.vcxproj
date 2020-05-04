@@ -44,7 +44,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SIV3D_0_4_2)\include;$(SIV3D_0_4_2)\include\ThirdParty;$(ProjectDir)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SIV3D_0_4_3)\include;$(SIV3D_0_4_3)\include\ThirdParty;$(ProjectDir)\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SIV3D_0_4_2)\lib\Windows;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Intermediate\$(ProjectName)\Debug\</OutDir>
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Debug\Intermediate\</IntDir>
@@ -54,7 +54,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SIV3D_0_4_2)\include;$(SIV3D_0_4_2)\include\ThirdParty;$(ProjectDir)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SIV3D_0_4_3)\include;$(SIV3D_0_4_3)\include\ThirdParty;$(ProjectDir)\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SIV3D_0_4_2)\lib\Windows;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\</OutDir>
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\Intermediate\</IntDir>
@@ -75,7 +75,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MinimalRebuild>false</MinimalRebuild>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalOptions>/std:c++latest /source-charset: utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/source-charset:utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -99,7 +99,7 @@
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalOptions>/std:c++latest /source-charset: utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/source-charset:utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -246,13 +246,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\S3DTiled.hpp" />
-    <ClInclude Include="include\S3DTiled\TiledAnimationFrame.hpp" />
     <ClInclude Include="include\S3DTiled\TiledLayer.hpp" />
     <ClInclude Include="include\S3DTiled\TiledMap.hpp" />
     <ClInclude Include="include\S3DTiled\TiledObject.hpp" />
     <ClInclude Include="include\S3DTiled\TiledProperty.hpp" />
     <ClInclude Include="include\S3DTiled\TiledShape.hpp" />
-    <ClInclude Include="include\S3DTiled\TiledTile.hpp" />
     <ClInclude Include="include\S3DTiled\TiledTypes.hpp" />
     <ClInclude Include="src\Parser\TiledParser.hpp" />
     <ClInclude Include="src\Parser\TiledReader.hpp" />
