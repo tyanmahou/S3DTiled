@@ -19,7 +19,8 @@ namespace s3dTiled
 
 		bool open(s3d::FilePathView path, TiledFileType fileType)
 		{
-			auto ext = FileSystem::IsResource(path) ? path.substr(1) : path;
+			auto basePath = FileSystem::IsResource(path) ? path.substr(1) : path;
+			auto ext = FileSystem::Extension(basePath);
 			if (fileType == TiledFileType::Tmx || ext == U"tmx") {
 				m_map = ParseTmx(path);
 			} else if (fileType == TiledFileType::Json || ext == U"json") {
