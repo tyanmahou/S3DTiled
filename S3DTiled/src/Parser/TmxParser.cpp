@@ -6,6 +6,7 @@
 
 #include <Siv3D/Types.hpp>
 #include <Siv3D/Color.hpp>
+#include <Siv3D/BinaryReader.hpp>
 #include <Siv3D/XMLReader.hpp>
 #include <Siv3D/Parse.hpp>
 #include <Siv3D/FileSystem.hpp>
@@ -34,13 +35,18 @@ namespace
 	public:
 		TmxParser() = default;
 
-		std::shared_ptr<CTiledMap> parse(const FilePath& path)
+		std::shared_ptr<CTiledMap> parse(s3d::FilePathView path)
 		{
-			XMLReader root(static_cast<FilePathView>(path));
+			XMLReader root(BinaryReader(path), false);
 			if (!root) {
 				return nullptr;
 			}
-			this->m_parentPath = FileSystem::ParentPath(path);
+			if (FileSystem::IsResource(path)) {
+				this->m_parentPath = U"/" +
+					FileSystem::RelativePath(FileSystem::ParentPath(path.substr(1)));
+			} else {
+				this->m_parentPath = FileSystem::RelativePath(FileSystem::ParentPath(path));
+			}
 
 			// map設定
 			Size mapSize{
@@ -394,7 +400,7 @@ namespace
 
 namespace s3dTiled
 {
-	std::shared_ptr<CTiledMap> ParseTmx(const s3d::FilePath& path)
+	std::shared_ptr<CTiledMap> ParseTmx(s3d::FilePathView path)
 	{
 		TmxParser parser;
 		return parser.parse(path);

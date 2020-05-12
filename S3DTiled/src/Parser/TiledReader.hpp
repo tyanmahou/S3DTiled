@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include<memory>
 
@@ -25,9 +25,9 @@ namespace s3dTiled
 	public:
 		TiledReader();
 
-		explicit TiledReader(const s3d::FilePath& path, TiledFileType fileType = TiledFileType::Unspecified);
+		explicit TiledReader(s3d::FilePathView path, TiledFileType fileType = TiledFileType::Unspecified);
 
-		bool open(const s3d::FilePath& path, TiledFileType fileType = TiledFileType::Unspecified);
+		bool open(s3d::FilePathView path, TiledFileType fileType = TiledFileType::Unspecified);
 
 		operator bool() const;
 

@@ -1,4 +1,4 @@
-﻿#include "TiledReader.hpp"
+#include "TiledReader.hpp"
 #include "TiledParser.hpp"
 #include "../TiledMap/CTiledMap.hpp"
 
@@ -17,8 +17,11 @@ namespace s3dTiled
 	private:
 		std::shared_ptr<CTiledMap> m_map;
 
-		bool open(const FilePath& path, TiledFileType fileType)
+		bool open(s3d::FilePathView path, TiledFileType fileType)
 		{
+			if (FileSystem::IsResource(path)) {
+				path = path.substr(1);
+			}
 			if (fileType == TiledFileType::Tmx || FileSystem::Extension(path) == U"tmx") {
 				m_map = ParseTmx(path);
 			} else if (fileType == TiledFileType::Json || FileSystem::Extension(path) == U"json") {
@@ -29,7 +32,7 @@ namespace s3dTiled
 	public:
 		CTiledReader() = default;
 
-		CTiledReader(const FilePath& path, TiledFileType fileType)
+		CTiledReader(s3d::FilePathView path, TiledFileType fileType)
 		{
 			this->open(path, fileType);
 		}
@@ -39,11 +42,11 @@ namespace s3dTiled
 		pImpl(std::make_shared<CTiledReader>())
 	{}
 
-	TiledReader::TiledReader(const FilePath & path, TiledFileType fileType) :
+	TiledReader::TiledReader(s3d::FilePathView path, TiledFileType fileType) :
 		pImpl(std::make_shared<CTiledReader>(path, fileType))
 	{}
 
-	bool TiledReader::open(const FilePath& path, TiledFileType fileType)
+	bool TiledReader::open(s3d::FilePathView path, TiledFileType fileType)
 	{
 		return pImpl->open(path, fileType);
 	}
