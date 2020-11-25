@@ -42,5 +42,7 @@ namespace s3dTiled
 
 		s3d::Array<TiledTile> getTiles()const;
 		s3d::Array<TiledAnimationFrame> getAnimationFrames()const;
+
+		const s3d::Optional<s3d::Color>& getBackGroundColor()const;
 	};
 } // namespace s3dTiled

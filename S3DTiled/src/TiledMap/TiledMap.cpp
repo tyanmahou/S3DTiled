@@ -114,4 +114,8 @@ namespace s3dTiled
 	{
 		return pImpl->getAnimationFrames();
 	}
+	const s3d::Optional<s3d::Color>& TiledMap::getBackGroundColor() const
+	{
+		return pImpl->getBackGroundColor();
+	}
 } // namespace s3dTiled

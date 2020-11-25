@@ -39,6 +39,7 @@ namespace s3dTiled
 
 		s3d::Rect getRect() const;
 
+		const s3d::Optional<s3d::Color>& getBackGroundColor()const;
 		void setBackGroundColor(const s3d::Color& color);
 		void addTileSet(std::unique_ptr<TileSetBase>&& tileSet);
 		void setProps(TiledProperties&& props);

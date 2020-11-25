@@ -13,6 +13,11 @@ namespace s3dTiled
 		return { m_tileSize.x * m_mapSize.x, m_tileSize.y * m_mapSize.y };
 	}
 
+	const s3d::Optional<s3d::Color>& CTiledMap::getBackGroundColor() const
+	{
+		return m_backGroundColor;
+	}
+
 	void CTiledMap::setBackGroundColor(const s3d::Color& color)
 	{
 		m_backGroundColor = color;
