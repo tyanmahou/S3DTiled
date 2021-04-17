@@ -151,6 +151,7 @@ namespace s3dTiled
 
 			ret.push_back(TiledTile{
 				.gId = m_firstGId + tileId,
+				.tileId = tileId,
 				.image = m_image,
 				.offset = { m_tileSize.x * x, m_tileSize.y * y },
 				.size = m_tileSize,
@@ -182,6 +183,7 @@ namespace s3dTiled
 		for (auto&& [tileId, image] : m_images) {
 			ret.push_back(TiledTile{
 				.gId = m_firstGId + tileId,
+				.tileId = tileId,
 				.image = image.source,
 				.offset = Vec2::Zero(),
 				.size = image.size,

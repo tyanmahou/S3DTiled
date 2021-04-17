@@ -10,6 +10,7 @@ namespace s3dTiled
 	struct TiledTile
 	{
 		GId gId;
+		TileId tileId;
 		s3d::String image;
 		s3d::Vec2 offset;
 		s3d::Vec2 size;
