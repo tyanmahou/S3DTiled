@@ -120,7 +120,6 @@
     <ClCompile Include="src\TiledMap\TiledMap.cpp" />
     <ClCompile Include="src\Object\Object.cpp" />
     <ClCompile Include="src\Property\Property.cpp" />
-    <ClCompile Include="src\TiledSets\TileSetBase.cpp" />
     <ClCompile Include="src\TileSet\TileSet.cpp" />
     <ClCompile Include="src\TileSet\CTileSet.cpp" />
     <ClCompile Include="src\TileSet\TileSetList.cpp" />

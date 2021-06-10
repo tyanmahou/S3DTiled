@@ -46,6 +46,9 @@ namespace s3dTiled
 		void addLayer(const Layer& layer);
 
 		s3d::TextureRegion getTileTexture(GId gId, double timeSec);
+		const Properties& getTileProperties(GId gId) const;
+		s3d::Optional<Property> getTileProperty(GId gId, const s3d::String& key) const;
+
 		const s3d::Texture& loadTexture(const s3d::FilePath& imagePath);
 
 		const s3d::Array<std::pair<GId, TileSet>>& getTileSets() const;

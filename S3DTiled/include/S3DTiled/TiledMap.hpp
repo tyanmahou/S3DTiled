@@ -30,6 +30,8 @@ namespace s3dTiled
 		s3d::Optional<Layer> getLayer(const s3d::String& name)const;
 
 		s3d::TextureRegion getTileTexture(GId gId, double timeSec = s3d::Scene::Time()) const;
+
+		const Properties& getTileProperties(GId gId) const;
 		s3d::Optional<Property> getTileProperty(GId gId, const s3d::String& key) const;
 
 		void draw(const s3d::Rect& rect, double timeSec = s3d::Scene::Time()) const;

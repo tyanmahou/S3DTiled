@@ -46,6 +46,14 @@ namespace s3dTiled
 		const auto& tex = this->loadTexture(tile.image);
 		return tex(tile.offset, tile.size);
 	}
+	const Properties& CTiledMap::getTileProperties(GId gId) const
+	{
+		return m_tileSet.getProperties(gId);
+	}
+	s3d::Optional<Property> CTiledMap::getTileProperty(GId gId, const s3d::String& key) const
+	{
+		return m_tileSet.getProperty(gId, key);
+	}
 	const s3d::Texture& CTiledMap::loadTexture(const s3d::FilePath& imagePath)
     {
 		if (m_textures.find(imagePath) != m_textures.end()) {

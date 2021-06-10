@@ -111,9 +111,6 @@
     <ClCompile Include="src\TiledMap\CTiledMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\TiledSets\TileSetBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Property\Property.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

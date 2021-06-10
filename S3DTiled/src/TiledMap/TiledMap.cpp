@@ -67,9 +67,14 @@ namespace s3dTiled
 		return pImpl->getTileTexture(gId, timeSec);
 	}
 
+	const Properties& TiledMap::getTileProperties(GId gId) const
+	{
+		return pImpl->getTileProperties(gId);
+	}
+
 	Optional<Property> TiledMap::getTileProperty(GId gId, const String& key) const
 	{
-		return pImpl->m_tileSet.getProperty(gId, key);
+		return pImpl->getTileProperty(gId, key);
 	}
 
 	bool TiledMap::drawLayer(const String& name, const Rect& rect, double timeSec) const
