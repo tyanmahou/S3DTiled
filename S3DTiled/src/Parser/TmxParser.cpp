@@ -301,21 +301,7 @@ namespace
             return obj;
         }
 
-        Animation parseAnimation(const XMLElement& xml)
-        {
-            Animation ret;
-
-            for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
-                if (elm.name() != U"frame") {
-                    continue;
-                }
-                int32 duration = Parse<int32>(elm.attribute(U"duration").value_or(U"0"));
-                TileId tileId = Parse<TileId>(elm.attribute(U"tileid").value_or(U"0"));
-                ret.addFrame(tileId, duration);
-            }
-            return ret;
-        }
-
+#pragma region タイルセット
         std::pair<GId, std::shared_ptr<CTileSet>> tryTileSet(const XMLElement& xml)
         {
             if (xml.name() != U"tileset") {
@@ -335,6 +321,21 @@ namespace
             tileSet->setColumns(Parse<uint32>(xml.attribute(U"columns").value_or(U"0")));
 
             // animationは階層が下がるのでここではやらない
+        }
+
+        Animation parseAnimation(const XMLElement& xml)
+        {
+            Animation ret;
+
+            for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
+                if (elm.name() != U"frame") {
+                    continue;
+                }
+                int32 duration = Parse<int32>(elm.attribute(U"duration").value_or(U"0"));
+                TileId tileId = Parse<TileId>(elm.attribute(U"tileid").value_or(U"0"));
+                ret.addFrame(tileId, duration);
+            }
+            return ret;
         }
 
         void tryParseTileInfo(Tile* tile, const XMLElement& xml)
@@ -378,7 +379,7 @@ namespace
                         .image = image,
                         .offset = { tileSize.x * x, tileSize.y * y },
                         .size = tileSize,
-                    });
+                        });
                 }
             }
             // その他
@@ -418,6 +419,8 @@ namespace
             }
             return tileSet;
         }
+#pragma endregion
+
     };
 }  // namespace
 
