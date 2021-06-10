@@ -213,7 +213,7 @@ namespace
 				return type == U"file" ? this->m_parentPath + value : value;
 			}
 		}
-		bool tryParseShape(const XMLElement& elm, TiledShape & shape, const Vec2 & size)
+		bool tryParseShape(const XMLElement& elm, Shape & shape, const Vec2 & size)
 		{
 			if (elm.name() == U"ellipse") {
 				shape = Ellipse({ 0,0 }, size);

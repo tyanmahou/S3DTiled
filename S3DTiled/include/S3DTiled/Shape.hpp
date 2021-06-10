@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include<variant>
 
@@ -9,5 +9,10 @@
 
 namespace s3dTiled
 {
-	using TiledShape = std::variant<s3d::RectF, s3d::Ellipse, s3d::Polygon, s3d::LineString>;
+	using Shape = std::variant<
+		s3d::RectF,
+		s3d::Ellipse,
+		s3d::Polygon,
+		s3d::LineString
+	>;
 } // namespace s3dTiled

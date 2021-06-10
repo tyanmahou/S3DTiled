@@ -6,7 +6,7 @@
 
 #include "TiledTypes.hpp"
 #include "TiledProperty.hpp"
-#include "TiledShape.hpp"
+#include "Shape.hpp"
 
 namespace s3dTiled
 {
@@ -17,7 +17,7 @@ namespace s3dTiled
 		s3d::String type;
 		s3d::Vec2 pos;
 		double rotation;
-		TiledShape shape;
+		Shape shape;
 		TiledProperties props;
 		s3d::Optional<GId> gId;
 		bool isMirrored = false;

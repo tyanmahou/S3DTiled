@@ -251,7 +251,7 @@
     <ClInclude Include="include\S3DTiled\TiledMap.hpp" />
     <ClInclude Include="include\S3DTiled\Object.hpp" />
     <ClInclude Include="include\S3DTiled\TiledProperty.hpp" />
-    <ClInclude Include="include\S3DTiled\TiledShape.hpp" />
+    <ClInclude Include="include\S3DTiled\Shape.hpp" />
     <ClInclude Include="include\S3DTiled\TiledTile.hpp" />
     <ClInclude Include="include\S3DTiled\TiledTypes.hpp" />
     <ClInclude Include="src\Parser\TiledParser.hpp" />
