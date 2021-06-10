@@ -114,7 +114,7 @@
   <ItemGroup>
     <ClCompile Include="src\Parser\TiledReader.cpp" />
     <ClCompile Include="src\Parser\TmxParser.cpp" />
-    <ClCompile Include="src\TiledLayer\TiledLayer.cpp" />
+    <ClCompile Include="src\Layer\Layer.cpp" />
     <ClCompile Include="src\TiledMap\CTiledMap.cpp" />
     <ClCompile Include="src\TiledMap\TiledMap.cpp" />
     <ClCompile Include="src\Object\Object.cpp" />

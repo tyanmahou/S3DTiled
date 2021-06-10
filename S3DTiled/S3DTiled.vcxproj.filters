@@ -102,7 +102,7 @@
     <ClCompile Include="src\Parser\TmxParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\TiledLayer\TiledLayer.cpp">
+    <ClCompile Include="src\Layer\Layer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\TiledMap\TiledMap.cpp">
