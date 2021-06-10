@@ -58,6 +58,7 @@ namespace s3dTiled
 
         s3d::Optional<Property> getProperty(TileId tileId, const s3d::String& key) const;
 
+        s3d::Array<Tile> getTiles() const;
     private:
         std::shared_ptr<CTileSet> pImpl;
     };

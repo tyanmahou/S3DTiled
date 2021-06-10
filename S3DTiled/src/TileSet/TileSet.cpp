@@ -32,4 +32,8 @@ namespace s3dTiled
     {
         return pImpl->getProperty(tileId, key);
     }
+    s3d::Array<Tile> TileSet::getTiles() const
+    {
+        return pImpl->getTiles();
+    }
 } // namespace s3dTiled

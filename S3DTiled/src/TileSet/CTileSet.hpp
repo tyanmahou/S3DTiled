@@ -46,6 +46,7 @@ namespace s3dTiled
 
         s3d::Optional<Property> getProperty(TileId tileId, const s3d::String& key);
 
+        s3d::Array<Tile> getTiles() const;
     private:
         s3d::HashTable<TileId, Tile> m_tiles;
         s3d::uint32 m_tileCount;

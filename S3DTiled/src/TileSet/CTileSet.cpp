@@ -29,4 +29,12 @@ namespace s3dTiled
         }
         return props.at(key);
     }
+    s3d::Array<Tile> CTileSet::getTiles() const
+    {
+        s3d::Array<Tile> ret;
+        for (const auto& pair : m_tiles) {
+            ret.push_back(pair.second);
+        }
+        return ret.sorted();
+    }
 } // namespace s3dTiled

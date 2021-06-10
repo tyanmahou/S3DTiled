@@ -9,3 +9,4 @@
 
 #include "S3DTiled/TiledMap.hpp"
 #include "S3DTiled/Layer.hpp"
+#include "S3DTiled/TileSet.hpp"
