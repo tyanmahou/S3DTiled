@@ -52,6 +52,7 @@ namespace s3dTiled
 		std::unordered_map<TileId, TiledAnimation> m_animations;
 		std::unordered_map<TileId, TiledProperties> m_props;
 	public:
+		virtual ~TileSetBase() = default;
 
 		void setFirstGId(GId gId);
 		void setTileCount(s3d::uint32 count);
