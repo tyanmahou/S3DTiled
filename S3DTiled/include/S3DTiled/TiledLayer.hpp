@@ -8,7 +8,7 @@
 #include <Siv3D/String.hpp>
 #include <Siv3D/Vector2D.hpp>
 
-#include "TiledTypes.hpp"
+#include "Types.hpp"
 #include "Property.hpp"
 #include "Object.hpp"
 

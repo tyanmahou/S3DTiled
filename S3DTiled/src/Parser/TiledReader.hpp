@@ -2,7 +2,7 @@
 
 #include<memory>
 
-#include<S3DTiled/TiledTypes.hpp>
+#include<S3DTiled/Types.hpp>
 
 #include<Siv3D/Fwd.hpp>
 #include<Siv3D/Optional.hpp>

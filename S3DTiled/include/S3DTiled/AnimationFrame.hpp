@@ -3,7 +3,7 @@
 #include<Siv3D/Vector2D.hpp>
 #include<Siv3D/String.hpp>
 
-#include "TiledTypes.hpp"
+#include "Types.hpp"
 
 namespace s3dTiled
 {

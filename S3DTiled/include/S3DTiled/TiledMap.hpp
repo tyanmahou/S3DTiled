@@ -5,7 +5,7 @@
 
 #include "AnimationFrame.hpp"
 #include "Tile.hpp"
-#include "TiledTypes.hpp"
+#include "Types.hpp"
 
 namespace s3dTiled
 {

@@ -5,7 +5,7 @@
 
 #include <S3DTiled/Tile.hpp>
 #include <S3DTiled/AnimationFrame.hpp>
-#include <S3DTiled/TiledTypes.hpp>
+#include <S3DTiled/Types.hpp>
 #include <S3DTiled/Property.hpp>
 
 #include <Siv3D/Stopwatch.hpp>

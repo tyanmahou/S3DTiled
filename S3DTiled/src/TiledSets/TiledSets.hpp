@@ -3,7 +3,7 @@
 #include<memory>
 #include <Siv3D/Array.hpp>
 
-#include <S3DTiled/TiledTypes.hpp>
+#include <S3DTiled/Types.hpp>
 #include <S3DTiled/Tile.hpp>
 #include <S3DTiled/AnimationFrame.hpp>
 

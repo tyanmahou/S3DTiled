@@ -4,7 +4,7 @@
 #include<Siv3D/String.hpp>
 #include<Siv3D/Optional.hpp>
 
-#include "TiledTypes.hpp"
+#include "Types.hpp"
 #include "Property.hpp"
 #include "Shape.hpp"
 
