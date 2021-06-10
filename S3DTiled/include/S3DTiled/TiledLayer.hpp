@@ -118,7 +118,7 @@ namespace s3dTiled
 		s3d::int32 m_id;
 		s3d::String m_name;
 		s3d::Vec2 m_offset;
-		TiledProperties m_props;
+		Properties m_props;
 		bool m_visible = true;
 	public:
 		TiledLayerBase() = default;
@@ -129,7 +129,7 @@ namespace s3dTiled
 
 		void setVisible(bool visible);
 		bool getVisible() const;
-		void setProps(TiledProperties&& props);
+		void setProps(Properties&& props);
 		s3d::Optional<Property> getProperty(const s3d::String& key) const;
 
 		void setId(s3d::uint32 id);

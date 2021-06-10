@@ -58,7 +58,7 @@ namespace s3dTiled
 		return pImpl->getTileSet(gId)->getTextureRegion(gId, map);
 	}
 
-    const TiledProperties& TiledSets::getProperties(GId gId) const
+    const Properties& TiledSets::getProperties(GId gId) const
     {
 		return pImpl->getTileSet(gId)->getProperties(gId);
     }

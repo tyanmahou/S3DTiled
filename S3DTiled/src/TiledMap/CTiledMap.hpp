@@ -21,7 +21,7 @@ namespace s3dTiled
 		friend class TiledMap;
 	private:
 		TiledSets m_tiledSets;
-		TiledProperties m_props;
+		Properties m_props;
 
 		s3d::Size m_mapSize;
 		s3d::Size m_tileSize;
@@ -42,7 +42,7 @@ namespace s3dTiled
 		const s3d::Optional<s3d::Color>& getBackGroundColor()const;
 		void setBackGroundColor(const s3d::Color& color);
 		void addTileSet(std::unique_ptr<TileSetBase>&& tileSet);
-		void setProps(TiledProperties&& props);
+		void setProps(Properties&& props);
 		void addLayer(const TiledLayer& layer);
 
 		const TiledSets& getTiledSets() const;

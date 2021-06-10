@@ -10,7 +10,7 @@ namespace s3dTiled
 	using TileId = s3d::uint32;
 
 	class Property;
-	using TiledProperties = std::unordered_map<s3d::String, Property>;
+	using Properties = std::unordered_map<s3d::String, Property>;
 
 	/// <summary>
 	/// Tiledのファイル形式

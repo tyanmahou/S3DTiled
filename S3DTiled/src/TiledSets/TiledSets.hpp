@@ -22,7 +22,7 @@ namespace s3dTiled
 		void addTileSet(std::unique_ptr<TileSetBase>&& tileSet) const;
 		s3d::TextureRegion getTile(GId gId, const TiledMap& map) const;
 
-		const TiledProperties& getProperties(GId gId) const;
+		const Properties& getProperties(GId gId) const;
 		s3d::Optional<Property> getProperty(GId gId, const s3d::String& key) const;
 
 		s3d::Array<TiledTile> getTiles()const;

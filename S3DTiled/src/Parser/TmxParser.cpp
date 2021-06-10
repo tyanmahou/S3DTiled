@@ -184,9 +184,9 @@ namespace
 			return layer;
 		}
 
-		TiledProperties parseProps(const XMLElement& xml)
+		Properties parseProps(const XMLElement& xml)
 		{
-			TiledProperties ret;
+			Properties ret;
 
 			for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
 				if (elm.name() == U"property") {
@@ -252,7 +252,7 @@ namespace
 		Object parseObject(const XMLElement& xml)
 		{
 			Object obj;
-			TiledProperties props;
+			Properties props;
 
 			obj.id = Parse<uint32>(xml.attribute(U"id").value_or(U"0"));
 			obj.name = xml.attribute(U"name").value_or(U"");

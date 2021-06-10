@@ -18,11 +18,11 @@ namespace s3dTiled
 		s3d::Vec2 pos;
 		double rotation;
 		Shape shape;
-		TiledProperties props;
+		Properties props;
 		s3d::Optional<GId> gId;
 		bool isMirrored = false;
 		bool isFliped = false;
-		void setProps(TiledProperties&& props);
+		void setProps(Properties&& props);
 		s3d::Optional<Property> getProperty(const s3d::String& key) const;
 
 		s3d::RectF toRectF() const;

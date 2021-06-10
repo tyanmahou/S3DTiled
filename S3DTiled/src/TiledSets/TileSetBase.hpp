@@ -50,7 +50,7 @@ namespace s3dTiled
 		s3d::uint32 m_tileCount;
 		s3d::uint32 m_columns;
 		std::unordered_map<TileId, TiledAnimation> m_animations;
-		std::unordered_map<TileId, TiledProperties> m_props;
+		std::unordered_map<TileId, Properties> m_props;
 	public:
 		virtual ~TileSetBase() = default;
 
@@ -59,9 +59,9 @@ namespace s3dTiled
 		void setColumns(s3d::uint32 columns);
 
 		void addAnimation(TileId tileId, TiledAnimation&& animetion);
-		void addProps(TileId tileId, TiledProperties&& props);
+		void addProps(TileId tileId, Properties&& props);
 
-		const TiledProperties& getProperties(GId gId);
+		const Properties& getProperties(GId gId);
 		s3d::Optional<Property> getProperty(GId gId, const s3d::String& key);
 
 		GId getFirstGId() const;

@@ -109,7 +109,7 @@ namespace s3dTiled
 	{
 		return m_visible;
 	}
-	void TiledLayerBase::setProps(TiledProperties&& props)
+	void TiledLayerBase::setProps(Properties&& props)
 	{
 		this->m_props = std::move(props);
 	}

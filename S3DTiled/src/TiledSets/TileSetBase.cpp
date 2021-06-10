@@ -63,12 +63,12 @@ namespace s3dTiled
 		m_animations.emplace(tileId, std::move(animetion));
 	}
 
-	void TileSetBase::addProps(TileId tileId, TiledProperties&& props)
+	void TileSetBase::addProps(TileId tileId, Properties&& props)
 	{
 		m_props.emplace(tileId, std::move(props));
 	}
 
-    const TiledProperties& TileSetBase::getProperties(GId gId)
+    const Properties& TileSetBase::getProperties(GId gId)
     {
 		TileId tileId = gId - m_firstGId;
 

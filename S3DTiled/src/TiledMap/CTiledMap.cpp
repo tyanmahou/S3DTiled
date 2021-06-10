@@ -28,7 +28,7 @@ namespace s3dTiled
 		m_tiledSets.addTileSet(std::move(tileSet));
 	}
 
-	void CTiledMap::setProps(TiledProperties&& props)
+	void CTiledMap::setProps(Properties&& props)
 	{
 		m_props = std::move(props);
 	}

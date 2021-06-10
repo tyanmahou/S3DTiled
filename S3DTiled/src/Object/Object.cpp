@@ -2,7 +2,7 @@
 
 namespace s3dTiled
 {
-	void Object::setProps(TiledProperties&& _props)
+	void Object::setProps(Properties&& _props)
 	{
 		this->props = std::move(_props);
 	}
