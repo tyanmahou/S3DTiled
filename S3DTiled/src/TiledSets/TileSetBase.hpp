@@ -6,7 +6,7 @@
 #include <S3DTiled/TiledTile.hpp>
 #include <S3DTiled/AnimationFrame.hpp>
 #include <S3DTiled/TiledTypes.hpp>
-#include <S3DTiled/TiledProperty.hpp>
+#include <S3DTiled/Property.hpp>
 
 #include <Siv3D/Stopwatch.hpp>
 #include <Siv3D/Array.hpp>
@@ -62,7 +62,7 @@ namespace s3dTiled
 		void addProps(TileId tileId, TiledProperties&& props);
 
 		const TiledProperties& getProperties(GId gId);
-		s3d::Optional<TiledProperty> getProperty(GId gId, const s3d::String& key);
+		s3d::Optional<Property> getProperty(GId gId, const s3d::String& key);
 
 		GId getFirstGId() const;
 

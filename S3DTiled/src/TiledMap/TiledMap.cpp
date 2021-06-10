@@ -4,7 +4,7 @@
 
 #include <S3DTiled/TiledMap.hpp>
 #include <S3DTiled/TiledLayer.hpp>
-#include <S3DTiled/TiledProperty.hpp>
+#include <S3DTiled/Property.hpp>
 
 #include <Siv3D/Color.hpp>
 #include <Siv3D/Optional.hpp>
@@ -46,7 +46,7 @@ namespace s3dTiled
 		return pImpl->m_tileSize;
 	}
 
-	Optional<TiledProperty> TiledMap::getProperty(const String& key) const
+	Optional<Property> TiledMap::getProperty(const String& key) const
 	{
 		if (this->pImpl->m_props.find(key) != this->pImpl->m_props.end()) {
 			return this->pImpl->m_props.at(key);
@@ -67,7 +67,7 @@ namespace s3dTiled
 		return pImpl->m_tiledSets.getTile(gId, *this);
 	}
 
-	Optional<TiledProperty> TiledMap::getTileProperty(GId gId, const String& key) const
+	Optional<Property> TiledMap::getTileProperty(GId gId, const String& key) const
 	{
 		return pImpl->m_tiledSets.getProperty(gId, key);
 	}

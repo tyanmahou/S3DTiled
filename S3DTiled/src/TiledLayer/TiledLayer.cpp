@@ -38,7 +38,7 @@ namespace s3dTiled
 		return this->pImpl->getName();
 	}
 
-	Optional<TiledProperty> TiledLayer::getProperty(const String& key) const
+	Optional<Property> TiledLayer::getProperty(const String& key) const
 	{
 		return pImpl->getProperty(key);
 	}
@@ -113,7 +113,7 @@ namespace s3dTiled
 	{
 		this->m_props = std::move(props);
 	}
-	Optional<TiledProperty> TiledLayerBase::getProperty(const String& key) const
+	Optional<Property> TiledLayerBase::getProperty(const String& key) const
 	{
 		if (this->m_props.find(key) != this->m_props.end()) {
 			return this->m_props.at(key);

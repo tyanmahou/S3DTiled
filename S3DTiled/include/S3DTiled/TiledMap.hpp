@@ -25,12 +25,12 @@ namespace s3dTiled
 		const s3d::Size& getMapSize() const;
 		const s3d::Size& getTileSize() const;
 
-		s3d::Optional<TiledProperty> getProperty(const s3d::String& key) const;
+		s3d::Optional<Property> getProperty(const s3d::String& key) const;
 
 		s3d::Optional<TiledLayer> getLayer(const s3d::String& name)const;
 
 		s3d::TextureRegion getTile(GId gId) const;
-		s3d::Optional<TiledProperty> getTileProperty(GId gId, const s3d::String& key) const;
+		s3d::Optional<Property> getTileProperty(GId gId, const s3d::String& key) const;
 
 		void draw(const s3d::Rect& rect) const;
 		void draw() const;

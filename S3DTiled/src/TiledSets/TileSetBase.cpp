@@ -75,7 +75,7 @@ namespace s3dTiled
 		return  m_props[tileId];
 	}
 
-    s3d::Optional<TiledProperty> TileSetBase::getProperty(GId gId, const s3d::String& key)
+    s3d::Optional<Property> TileSetBase::getProperty(GId gId, const s3d::String& key)
 	{
 		const auto& props = this->getProperties(gId);
 

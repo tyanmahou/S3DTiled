@@ -3,7 +3,7 @@
 #include "../TiledSets/TiledSets.hpp"
 
 #include <S3DTiled/TiledLayer.hpp>
-#include <S3DTiled/TiledProperty.hpp>
+#include <S3DTiled/Property.hpp>
 
 #include <Siv3D/Optional.hpp>
 #include <Siv3D/Color.hpp>

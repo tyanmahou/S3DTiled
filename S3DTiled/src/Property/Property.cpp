@@ -1,99 +1,99 @@
-﻿#include <S3DTiled/TiledProperty.hpp>
+#include <S3DTiled/Property.hpp>
 
 namespace s3dTiled
 {
     using namespace s3d;
 
-	TiledProperty::TiledProperty() :
+	Property::Property() :
 		m_type(Type::None)
 	{
 		memset(&m_storage, 0, sizeof(m_storage));
 	}
 
-	TiledProperty::TiledProperty(const TiledProperty & other) :
+	Property::Property(const Property & other) :
 		m_type(Type::None)
 	{
 		*this = other;
 	}
-	TiledProperty::TiledProperty(TiledProperty && other)noexcept :
+	Property::Property(Property && other)noexcept :
 		m_type(Type::None)
 	{
 		*this = std::move(other);
 	}
-	TiledProperty::TiledProperty(bool b):
+	Property::Property(bool b):
 		m_type(Type::Bool)
 	{
 		m_storage.b = b;
 	}
-	TiledProperty::TiledProperty(const s3d::Color& col):
+	Property::Property(const s3d::Color& col):
 		m_type(Type::Color)
 	{
 		m_storage.col = col;
 	}
-	TiledProperty::TiledProperty(double f):
+	Property::Property(double f):
 		m_type(Type::Float)
 	{
 		m_storage.f = f;
 	}
-	TiledProperty::TiledProperty(s3d::int32 i):
+	Property::Property(s3d::int32 i):
 		m_type(Type::Int)
 	{
 		m_storage.i = i;
 	}
-	TiledProperty::TiledProperty(const s3d::String& str):
+	Property::Property(const s3d::String& str):
 		m_type(Type::String)
 	{
 		m_storage.str = new String(str);
 	}
-	TiledProperty::~TiledProperty()
+	Property::~Property()
 	{
 		this->clear();
 	}
-	bool TiledProperty::toBool() const
+	bool Property::toBool() const
 	{
 		return this->m_storage.b;
 	}
-	TiledProperty::operator bool() const
+	Property::operator bool() const
 	{
 		return this->toBool();
 	}
-	Color TiledProperty::toColor() const
+	Color Property::toColor() const
 	{
 		return this->m_storage.col;
 	}
-	TiledProperty::operator s3d::Color() const
+	Property::operator s3d::Color() const
 	{
 		return this->toColor();
 	}
-	double TiledProperty::toFloat() const
+	double Property::toFloat() const
 	{
 		return this->m_storage.f;
 	}
-	TiledProperty::operator double() const
+	Property::operator double() const
 	{
 		return this->toFloat();
 	}
-	int32 TiledProperty::toInt() const
+	int32 Property::toInt() const
 	{
 		return this->m_storage.i;
 	}
-	TiledProperty::operator s3d::int32() const
+	Property::operator s3d::int32() const
 	{
 		return this->toInt();
 	}
-	const String& TiledProperty::toString() const
+	const String& Property::toString() const
 	{
 		return *this->m_storage.str;
 	}
-	TiledProperty::operator s3d::String() const
+	Property::operator s3d::String() const
 	{
 		return this->toString();
 	}
-	TiledProperty::Type TiledProperty::getType() const
+	Property::Type Property::getType() const
 	{
 		return m_type;
 	}
-	void TiledProperty::clear()
+	void Property::clear()
 	{
 		switch (this->m_type)
 		{
@@ -118,7 +118,7 @@ namespace s3dTiled
 		}
 		this->m_type = Type::None;
 	}
-	void TiledProperty::reset(Type type)
+	void Property::reset(Type type)
 	{
 		if (m_type == type) {
 			return;
@@ -126,7 +126,7 @@ namespace s3dTiled
 		this->clear();
 		switch (type)
 		{
-		case s3dTiled::TiledProperty::Type::String:
+		case s3dTiled::Property::Type::String:
 			m_storage.str = new String();
 			break;
 		default:
@@ -134,7 +134,7 @@ namespace s3dTiled
 		}
 		m_type = type;
 	}
-	TiledProperty& TiledProperty::operator=(const TiledProperty & other)
+	Property& Property::operator=(const Property & other)
 	{
 		if (this == &other) {
 			return *this;
@@ -166,7 +166,7 @@ namespace s3dTiled
 		}
 		return *this;
 	}
-	TiledProperty& TiledProperty::operator=(TiledProperty && other) noexcept
+	Property& Property::operator=(Property && other) noexcept
 	{
 		if (this == &other) {
 			return *this;

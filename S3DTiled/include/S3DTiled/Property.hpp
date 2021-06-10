@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include<Siv3D/Fwd.hpp>
 #include<Siv3D/Color.hpp>
@@ -8,7 +8,7 @@ namespace s3dTiled
 		/// <summary>
 		/// Tiledのプロパティ
 		/// </summary>
-		class TiledProperty
+		class Property
 		{
 		public:
 			enum class Type
@@ -33,17 +33,17 @@ namespace s3dTiled
 
 			void reset(Type type);
 		public:
-			TiledProperty();
-			TiledProperty(const TiledProperty& other);
-			TiledProperty(TiledProperty&& other) noexcept;
+			Property();
+			Property(const Property& other);
+			Property(Property&& other) noexcept;
 
-			TiledProperty(bool b);
-			TiledProperty(const s3d::Color& col);
-			TiledProperty(double f);
-			TiledProperty(s3d::int32 i);
-			TiledProperty(const s3d::String& str);
+			Property(bool b);
+			Property(const s3d::Color& col);
+			Property(double f);
+			Property(s3d::int32 i);
+			Property(const s3d::String& str);
 
-			~TiledProperty();
+			~Property();
 
 			bool toBool() const;
 			operator bool() const;
@@ -64,7 +64,7 @@ namespace s3dTiled
 
 			void clear();
 
-			TiledProperty& operator =(const TiledProperty& other);
-			TiledProperty& operator =(TiledProperty&& other) noexcept;
+			Property& operator =(const Property& other);
+			Property& operator =(Property&& other) noexcept;
 		};
 } // namespace s3dTiled

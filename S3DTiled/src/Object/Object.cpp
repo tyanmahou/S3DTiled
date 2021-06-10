@@ -7,7 +7,7 @@ namespace s3dTiled
 		this->props = std::move(_props);
 	}
 
-	s3d::Optional<TiledProperty> Object::getProperty(const s3d::String& key) const
+	s3d::Optional<Property> Object::getProperty(const s3d::String& key) const
 	{
 		if (props.find(key) != props.end()) {
 			return props.at(key);

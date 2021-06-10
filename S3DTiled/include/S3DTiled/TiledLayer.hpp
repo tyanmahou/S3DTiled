@@ -9,7 +9,7 @@
 #include <Siv3D/Vector2D.hpp>
 
 #include "TiledTypes.hpp"
-#include "TiledProperty.hpp"
+#include "Property.hpp"
 #include "Object.hpp"
 
 namespace s3dTiled
@@ -71,7 +71,7 @@ namespace s3dTiled
 		/// <summary>
 		/// プロパティを取得
 		/// </summary>
-		s3d::Optional<TiledProperty> getProperty(const s3d::String& key) const;
+		s3d::Optional<Property> getProperty(const s3d::String& key) const;
 
 		/// <summary>
 		/// 表示の有無を切り替える
@@ -130,7 +130,7 @@ namespace s3dTiled
 		void setVisible(bool visible);
 		bool getVisible() const;
 		void setProps(TiledProperties&& props);
-		s3d::Optional<TiledProperty> getProperty(const s3d::String& key) const;
+		s3d::Optional<Property> getProperty(const s3d::String& key) const;
 
 		void setId(s3d::uint32 id);
 		s3d::uint32 getId() const;

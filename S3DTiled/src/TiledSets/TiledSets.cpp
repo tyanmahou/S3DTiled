@@ -63,7 +63,7 @@ namespace s3dTiled
 		return pImpl->getTileSet(gId)->getProperties(gId);
     }
 
-    Optional<TiledProperty> TiledSets::getProperty(GId gId, const String& key) const
+    Optional<Property> TiledSets::getProperty(GId gId, const String& key) const
 	{
 		return pImpl->getTileSet(gId)->getProperty(gId, key);
 	}

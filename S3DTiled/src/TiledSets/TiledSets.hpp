@@ -23,7 +23,7 @@ namespace s3dTiled
 		s3d::TextureRegion getTile(GId gId, const TiledMap& map) const;
 
 		const TiledProperties& getProperties(GId gId) const;
-		s3d::Optional<TiledProperty> getProperty(GId gId, const s3d::String& key) const;
+		s3d::Optional<Property> getProperty(GId gId, const s3d::String& key) const;
 
 		s3d::Array<TiledTile> getTiles()const;
 		s3d::Array<AnimationFrame> getAnimationFrames()const;

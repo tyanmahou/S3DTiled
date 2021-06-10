@@ -196,7 +196,7 @@ namespace
 			return ret;
 		}
 
-		TiledProperty parseProp(const XMLElement& xml)
+		Property parseProp(const XMLElement& xml)
 		{
 			const String& type = xml.attribute(U"type").value_or(U"string");
 			const String& value = xml.attribute(U"value").value_or(U"");

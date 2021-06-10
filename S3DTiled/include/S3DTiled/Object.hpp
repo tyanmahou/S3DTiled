@@ -5,7 +5,7 @@
 #include<Siv3D/Optional.hpp>
 
 #include "TiledTypes.hpp"
-#include "TiledProperty.hpp"
+#include "Property.hpp"
 #include "Shape.hpp"
 
 namespace s3dTiled
@@ -23,7 +23,7 @@ namespace s3dTiled
 		bool isMirrored = false;
 		bool isFliped = false;
 		void setProps(TiledProperties&& props);
-		s3d::Optional<TiledProperty> getProperty(const s3d::String& key) const;
+		s3d::Optional<Property> getProperty(const s3d::String& key) const;
 
 		s3d::RectF toRectF() const;
 	};
