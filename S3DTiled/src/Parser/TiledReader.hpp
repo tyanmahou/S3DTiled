@@ -25,9 +25,9 @@ namespace s3dTiled
 	public:
 		TiledReader();
 
-		explicit TiledReader(s3d::FilePathView path, TiledFileType fileType = TiledFileType::Unspecified);
+		explicit TiledReader(s3d::FilePathView path, TiledMapFileType fileType = TiledMapFileType::Unspecified);
 
-		bool open(s3d::FilePathView path, TiledFileType fileType = TiledFileType::Unspecified);
+		bool open(s3d::FilePathView path, TiledMapFileType fileType = TiledMapFileType::Unspecified);
 
 		operator bool() const;
 

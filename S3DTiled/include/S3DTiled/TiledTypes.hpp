@@ -15,7 +15,7 @@ namespace s3dTiled
 	/// <summary>
 	/// Tiledのファイル形式
 	/// </summary>
-	enum class TiledFileType
+	enum class TiledMapFileType
 	{
 		Unspecified,
 		Tmx,

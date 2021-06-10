@@ -18,9 +18,9 @@ namespace s3dTiled
 	public:
 		TiledMap() = default;
 
-		TiledMap(s3d::FilePathView path, TiledFileType fileType = TiledFileType::Unspecified);
+		TiledMap(s3d::FilePathView path, TiledMapFileType fileType = TiledMapFileType::Unspecified);
 
-		bool open(s3d::FilePathView path, TiledFileType fileType = TiledFileType::Unspecified);
+		bool open(s3d::FilePathView path, TiledMapFileType fileType = TiledMapFileType::Unspecified);
 
 		const s3d::Size& getMapSize() const;
 		const s3d::Size& getTileSize() const;

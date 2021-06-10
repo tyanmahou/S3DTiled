@@ -17,7 +17,7 @@ namespace s3dTiled
 {
     using namespace s3d;
 
-	TiledMap::TiledMap(s3d::FilePathView path, TiledFileType fileType)
+	TiledMap::TiledMap(s3d::FilePathView path, TiledMapFileType fileType)
 	{
 		TiledReader reader(path, fileType);
 		if (!reader) {
@@ -26,7 +26,7 @@ namespace s3dTiled
 		this->pImpl = reader.getTiledMap();
 	}
 
-	bool TiledMap::open(s3d::FilePathView path, TiledFileType fileType)
+	bool TiledMap::open(s3d::FilePathView path, TiledMapFileType fileType)
 	{
 		TiledReader reader(path, fileType);
 		if (!reader) {
