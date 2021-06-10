@@ -2,7 +2,7 @@
 
 #include "../TiledSets/TiledSets.hpp"
 
-#include <S3DTiled/TiledLayer.hpp>
+#include <S3DTiled/Layer.hpp>
 #include <S3DTiled/Property.hpp>
 
 #include <Siv3D/Optional.hpp>
@@ -30,7 +30,7 @@ namespace s3dTiled
 		// TODO(@tyanmahou): orientation
 		// TODO(@tyanmahou): renderorder
 
-		s3d::Array<TiledLayer> m_layers;
+		s3d::Array<Layer> m_layers;
 		std::unordered_map<s3d::String, std::size_t> m_layerCache; // レイヤーへの名前検索をO(1)にする
 
 		std::unordered_map<s3d::FilePath, s3d::Texture> m_textures;
@@ -43,7 +43,7 @@ namespace s3dTiled
 		void setBackGroundColor(const s3d::Color& color);
 		void addTileSet(std::unique_ptr<TileSetBase>&& tileSet);
 		void setProps(Properties&& props);
-		void addLayer(const TiledLayer& layer);
+		void addLayer(const Layer& layer);
 
 		const TiledSets& getTiledSets() const;
 

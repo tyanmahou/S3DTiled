@@ -33,7 +33,7 @@ namespace s3dTiled
 		m_props = std::move(props);
 	}
 
-	void CTiledMap::addLayer(const TiledLayer& layer)
+	void CTiledMap::addLayer(const Layer& layer)
 	{
 		std::size_t index = m_layers.size();
 		m_layerCache[layer.getName()] = index;

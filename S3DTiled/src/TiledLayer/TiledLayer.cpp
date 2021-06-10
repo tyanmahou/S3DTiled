@@ -1,5 +1,5 @@
 #include <S3DTiled/TiledMap.hpp>
-#include <S3DTiled/TiledLayer.hpp>
+#include <S3DTiled/Layer.hpp>
 
 #include <Siv3D/TextureRegion.hpp>
 #include <Siv3D/TexturedQuad.hpp>
@@ -11,16 +11,16 @@ namespace s3dTiled
 {
     using namespace s3d;
 
-	TiledLayer::TiledLayer(std::shared_ptr<TiledLayerBase> layer) :
+	Layer::Layer(std::shared_ptr<LayerBase> layer) :
 		pImpl(layer)
 	{}
 
-	bool TiledLayer::draw(const TiledMap& map, const Rect& rect) const
+	bool Layer::draw(const TiledMap& map, const Rect& rect) const
 	{
 		return pImpl->draw(map, rect);
 	}
 
-	LayerType TiledLayer::getType() const
+	LayerType Layer::getType() const
 	{
 		if (!this->pImpl) {
 			return LayerType::None;
@@ -28,32 +28,32 @@ namespace s3dTiled
 		return this->pImpl->getType();
 	}
 
-    s3d::uint32 TiledLayer::getId() const
+    s3d::uint32 Layer::getId() const
     {
         return this->pImpl->getId();
     }
 
-	const String& TiledLayer::getName() const
+	const String& Layer::getName() const
 	{
 		return this->pImpl->getName();
 	}
 
-	Optional<Property> TiledLayer::getProperty(const String& key) const
+	Optional<Property> Layer::getProperty(const String& key) const
 	{
 		return pImpl->getProperty(key);
 	}
 
-	void TiledLayer::setVisible(bool visible)
+	void Layer::setVisible(bool visible)
 	{
 		pImpl->setVisible(visible);
 	}
 
-	bool TiledLayer::getVisible() const
+	bool Layer::getVisible() const
 	{
 		return pImpl->getVisible();
 	}
 
-	bool TiledLayer::then(std::function<void(const ImageLayer&)> callback) const
+	bool Layer::then(std::function<void(const ImageLayer&)> callback) const
 	{
 		if (pImpl->getType() != LayerType::ImageLayer) {
 			return false;
@@ -65,7 +65,7 @@ namespace s3dTiled
 		return false;
 	}
 
-	bool TiledLayer::then(std::function<void(const TileLayer&)> callback) const
+	bool Layer::then(std::function<void(const TileLayer&)> callback) const
 	{
 		if (pImpl->getType() != LayerType::TileLayer) {
 			return false;
@@ -77,7 +77,7 @@ namespace s3dTiled
 		return false;
 	}
 
-	bool TiledLayer::then(std::function<void(const ObjectGroup&)> callback) const
+	bool Layer::then(std::function<void(const ObjectGroup&)> callback) const
 	{
 		if (pImpl->getType() != LayerType::ObjectGroup) {
 			return false;
@@ -88,7 +88,7 @@ namespace s3dTiled
 		}
 		return false;
 	}
-	bool TiledLayer::then(std::function<void(const GroupLayer&)> callback) const
+	bool Layer::then(std::function<void(const GroupLayer&)> callback) const
 	{
 		if (pImpl->getType() != LayerType::GroupLayer) {
 			return false;
@@ -99,49 +99,49 @@ namespace s3dTiled
 		}
 		return false;
 	}
-	// TiledLayerBase
+	// LayerBase
 
-	void TiledLayerBase::setVisible(bool visible)
+	void LayerBase::setVisible(bool visible)
 	{
 		this->m_visible = visible;
 	}
-	bool TiledLayerBase::getVisible() const
+	bool LayerBase::getVisible() const
 	{
 		return m_visible;
 	}
-	void TiledLayerBase::setProps(Properties&& props)
+	void LayerBase::setProps(Properties&& props)
 	{
 		this->m_props = std::move(props);
 	}
-	Optional<Property> TiledLayerBase::getProperty(const String& key) const
+	Optional<Property> LayerBase::getProperty(const String& key) const
 	{
 		if (this->m_props.find(key) != this->m_props.end()) {
 			return this->m_props.at(key);
 		}
 		return none;
 	}
-    void TiledLayerBase::setId(s3d::uint32 id)
+    void LayerBase::setId(s3d::uint32 id)
     {
 		m_id = id;
 	}
-    s3d::uint32 TiledLayerBase::getId() const
+    s3d::uint32 LayerBase::getId() const
     {
 		return m_id;
     }
-	void TiledLayerBase::setName(const String& name)
+	void LayerBase::setName(const String& name)
 	{
 		this->m_name = name;
 	}
-	const String& TiledLayerBase::getName() const
+	const String& LayerBase::getName() const
 	{
 		return m_name;
 	}
-	void TiledLayerBase::setOffset(const Vec2& offset)
+	void LayerBase::setOffset(const Vec2& offset)
 	{
 		this->m_offset = offset;
 	}
 
-	const Vec2& TiledLayerBase::getOffset() const
+	const Vec2& LayerBase::getOffset() const
 	{
 		return m_offset;
 	}
@@ -282,21 +282,21 @@ namespace s3dTiled
 	{
 		return LayerType::ObjectGroup;
 	}
-	void GroupLayer::addLayer(const TiledLayer& layer)
+	void GroupLayer::addLayer(const Layer& layer)
 	{
 		std::size_t index = m_layers.size();
 		m_layerCache[layer.getName()] = index;
 
 		m_layers.push_back(layer);
 	}
-	s3d::Optional<TiledLayer> GroupLayer::getLayer(const s3d::String& name) const
+	s3d::Optional<Layer> GroupLayer::getLayer(const s3d::String& name) const
 	{
 		if (m_layerCache.find(name) == m_layerCache.end()) {
 			return none;
 		}
 		return m_layers[m_layerCache.at(name)];
 	}
-	const Array<TiledLayer>& GroupLayer::getLayers() const
+	const Array<Layer>& GroupLayer::getLayers() const
 	{
 		return m_layers;
 	}

@@ -2,7 +2,7 @@
 #include "../TiledSets/TileSetBase.hpp"
 #include "../TiledMap/CTiledMap.hpp"
 
-#include <S3DTiled/TiledLayer.hpp>
+#include <S3DTiled/Layer.hpp>
 
 #include <Siv3D/Types.hpp>
 #include <Siv3D/Color.hpp>
@@ -65,7 +65,7 @@ namespace
 
 			for (auto elm = root.firstChild(); elm; elm = elm.nextSibling()) {
 				if (auto && layer = this->tryParseLayer(elm)) {
-					m_map->addLayer(TiledLayer(layer));
+					m_map->addLayer(Layer(layer));
 				} else if (auto && tileSet = this->tryTileSet(elm)) {
 					m_map->addTileSet(std::move(tileSet));
 				} else if (elm.name() == U"properties") {
@@ -77,7 +77,7 @@ namespace
 			return m_map;
 		}
 	private:
-		std::shared_ptr<TiledLayerBase> tryParseLayer(const XMLElement& xml)
+		std::shared_ptr<LayerBase> tryParseLayer(const XMLElement& xml)
 		{
 			if (xml.name() == U"imagelayer") {
 				return this->parseImageLayer(xml);
@@ -92,7 +92,7 @@ namespace
 			return nullptr;
 		}
 
-		void parseLayerCommon(TiledLayerBase* layer, const XMLElement& xml)
+		void parseLayerCommon(LayerBase* layer, const XMLElement& xml)
 		{
 			// common
 			layer->setId(Parse<s3d::uint32>(xml.attribute(U"id").value_or(U"0")));
@@ -105,7 +105,7 @@ namespace
 
 			// プロパティは階層が下がるのでここでは取得しない
 		}
-		std::shared_ptr<TiledLayerBase> parseImageLayer(const XMLElement& xml)
+		std::shared_ptr<LayerBase> parseImageLayer(const XMLElement& xml)
 		{
 			auto layer = std::make_shared<ImageLayer>();
 			this->parseLayerCommon(layer.get(), xml);
@@ -120,7 +120,7 @@ namespace
 			return layer;
 		}
 
-		std::shared_ptr<TiledLayerBase> parseObjectGroup(const XMLElement& xml)
+		std::shared_ptr<LayerBase> parseObjectGroup(const XMLElement& xml)
 		{
 			auto layer = std::make_shared<ObjectGroup>();
 			this->parseLayerCommon(layer.get(), xml);
@@ -136,7 +136,7 @@ namespace
 		}
 
 
-		std::shared_ptr<TiledLayerBase> parseTileLayer(const XMLElement& xml)
+		std::shared_ptr<LayerBase> parseTileLayer(const XMLElement& xml)
 		{
 			auto layer = std::make_shared<TileLayer>();
 			this->parseLayerCommon(layer.get(), xml);
@@ -169,14 +169,14 @@ namespace
 			return layer;
 		}
 
-		std::shared_ptr<TiledLayerBase> parseGroupLayer(const XMLElement& xml)
+		std::shared_ptr<LayerBase> parseGroupLayer(const XMLElement& xml)
 		{
 			auto layer = std::make_shared<GroupLayer>();
 			this->parseLayerCommon(layer.get(), xml);
 
 			for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
 				if (auto&& child = this->tryParseLayer(elm)) {
-					layer->addLayer(TiledLayer(child));
+					layer->addLayer(Layer(child));
 				} else if (elm.name() == U"properties") {
 					layer->setProps(this->parseProps(elm));
 				}

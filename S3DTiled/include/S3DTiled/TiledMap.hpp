@@ -9,7 +9,7 @@
 
 namespace s3dTiled
 {
-	class TiledLayer;
+	class Layer;
 	class CTiledMap;
 
 	class TiledMap
@@ -27,7 +27,7 @@ namespace s3dTiled
 
 		s3d::Optional<Property> getProperty(const s3d::String& key) const;
 
-		s3d::Optional<TiledLayer> getLayer(const s3d::String& name)const;
+		s3d::Optional<Layer> getLayer(const s3d::String& name)const;
 
 		s3d::TextureRegion getTile(GId gId) const;
 		s3d::Optional<Property> getTileProperty(GId gId, const s3d::String& key) const;

@@ -247,7 +247,7 @@
   <ItemGroup>
     <ClInclude Include="include\S3DTiled.hpp" />
     <ClInclude Include="include\S3DTiled\AnimationFrame.hpp" />
-    <ClInclude Include="include\S3DTiled\TiledLayer.hpp" />
+    <ClInclude Include="include\S3DTiled\Layer.hpp" />
     <ClInclude Include="include\S3DTiled\TiledMap.hpp" />
     <ClInclude Include="include\S3DTiled\Object.hpp" />
     <ClInclude Include="include\S3DTiled\Property.hpp" />

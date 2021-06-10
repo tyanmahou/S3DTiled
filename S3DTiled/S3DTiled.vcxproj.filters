@@ -409,7 +409,7 @@
     <ClInclude Include="include\S3DTiled.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\S3DTiled\TiledLayer.hpp">
+    <ClInclude Include="include\S3DTiled\Layer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\S3DTiled\TiledMap.hpp">

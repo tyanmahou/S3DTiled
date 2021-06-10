@@ -16,7 +16,7 @@ namespace s3dTiled
 {
 	class TiledMap;
 
-	class TiledLayerBase;
+	class LayerBase;
 	class ImageLayer;
 	class TileLayer;
 	class ObjectGroup;
@@ -34,13 +34,13 @@ namespace s3dTiled
 	/// <summary>
 	/// Tiled Layer
 	/// </summary>
-	class TiledLayer
+	class Layer
 	{
 	private:
-		std::shared_ptr<TiledLayerBase> pImpl;
+		std::shared_ptr<LayerBase> pImpl;
 	public:
-		TiledLayer() = default;
-		explicit TiledLayer(std::shared_ptr<TiledLayerBase> layer);
+		Layer() = default;
+		explicit Layer(std::shared_ptr<LayerBase> layer);
 
 		/// <summary>
 		/// レイヤーの描画
@@ -112,7 +112,7 @@ namespace s3dTiled
 		bool then(std::function<void(const GroupLayer&)> callback) const;
 	};
 
-	class TiledLayerBase
+	class LayerBase
 	{
 	protected:
 		s3d::int32 m_id;
@@ -121,9 +121,9 @@ namespace s3dTiled
 		Properties m_props;
 		bool m_visible = true;
 	public:
-		TiledLayerBase() = default;
+		LayerBase() = default;
 
-		virtual ~TiledLayerBase() = default;
+		virtual ~LayerBase() = default;
 		virtual bool draw(const TiledMap& map, const s3d::Rect& rect) const = 0;
 		virtual LayerType getType() const = 0;
 
@@ -144,7 +144,7 @@ namespace s3dTiled
 	/// <summary>
 	/// ImageLayer
 	/// </summary>
-	class ImageLayer : public TiledLayerBase
+	class ImageLayer : public LayerBase
 	{
 	private:
 		s3d::FilePath m_image;
@@ -160,7 +160,7 @@ namespace s3dTiled
 	/// <summary>
 	/// TileLayer
 	/// </summary>
-	class TileLayer : public TiledLayerBase
+	class TileLayer : public LayerBase
 	{
 	private:
 		s3d::Grid<GId> m_gIds;
@@ -176,7 +176,7 @@ namespace s3dTiled
 	/// <summary>
 	/// Object Group
 	/// </summary>
-	class ObjectGroup : public TiledLayerBase
+	class ObjectGroup : public LayerBase
 	{
 	private:
 		s3d::Array<Object> m_objects;
@@ -195,16 +195,16 @@ namespace s3dTiled
 	/// <summary>
 	/// GroupLayer
 	/// </summary>
-	class GroupLayer : public TiledLayerBase
+	class GroupLayer : public LayerBase
 	{
 	private:
-		s3d::Array<TiledLayer> m_layers;
+		s3d::Array<Layer> m_layers;
 		std::unordered_map<s3d::String, std::size_t> m_layerCache;
 	public:
 		GroupLayer() = default;
-		void addLayer(const TiledLayer& layer);
-		s3d::Optional<TiledLayer> getLayer(const s3d::String& name)const;
-		const s3d::Array<TiledLayer>&  getLayers() const;
+		void addLayer(const Layer& layer);
+		s3d::Optional<Layer> getLayer(const s3d::String& name)const;
+		const s3d::Array<Layer>&  getLayers() const;
 
 		bool draw(const TiledMap& map, const s3d::Rect& rect) const override;
 

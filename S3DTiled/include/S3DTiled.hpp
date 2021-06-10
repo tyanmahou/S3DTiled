@@ -8,4 +8,4 @@
 // ------------------------------------
 
 #include "S3DTiled/TiledMap.hpp"
-#include "S3DTiled/TiledLayer.hpp"
+#include "S3DTiled/Layer.hpp"

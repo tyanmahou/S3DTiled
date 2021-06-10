@@ -3,7 +3,7 @@
 #include "CTiledMap.hpp"
 
 #include <S3DTiled/TiledMap.hpp>
-#include <S3DTiled/TiledLayer.hpp>
+#include <S3DTiled/Layer.hpp>
 #include <S3DTiled/Property.hpp>
 
 #include <Siv3D/Color.hpp>
@@ -54,7 +54,7 @@ namespace s3dTiled
 		return none;
 	}
 
-	Optional<TiledLayer> TiledMap::getLayer(const String& name) const
+	Optional<Layer> TiledMap::getLayer(const String& name) const
 	{
 		if (pImpl->m_layerCache.find(name) == pImpl->m_layerCache.end()) {
 			return none;
