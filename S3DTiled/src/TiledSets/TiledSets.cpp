@@ -31,9 +31,9 @@ namespace s3dTiled
 			return m_tileSets[m_gIdTileIndexMap.at(gId)].get();
 		}
 
-		s3d::Array<TiledTile> getTiles() const
+		s3d::Array<Tile> getTiles() const
 		{
-			s3d::Array<TiledTile> ret;
+			s3d::Array<Tile> ret;
 			for (const auto& tileSet : m_tileSets) {
 				ret.append(tileSet->getTiles());
 			}
@@ -68,7 +68,7 @@ namespace s3dTiled
 		return pImpl->getTileSet(gId)->getProperty(gId, key);
 	}
 
-	s3d::Array<TiledTile> TiledSets::getTiles() const
+	s3d::Array<Tile> TiledSets::getTiles() const
 	{
 		return pImpl->getTiles();
 	}

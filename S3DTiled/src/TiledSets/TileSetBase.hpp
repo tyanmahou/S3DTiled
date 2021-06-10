@@ -73,7 +73,7 @@ namespace s3dTiled
 
 		virtual s3d::TextureRegion getTextureRegion(GId gId, const TiledMap& map) = 0;
 
-		virtual s3d::Array<TiledTile> getTiles()const = 0;
+		virtual s3d::Array<Tile> getTiles()const = 0;
 	};
 
 	/// <summary>
@@ -91,7 +91,7 @@ namespace s3dTiled
 		void setImagePath(const s3d::FilePath& image);
 
 		s3d::TextureRegion getTextureRegion(GId gId, const TiledMap& map) override;
-		s3d::Array<TiledTile> getTiles()const override;
+		s3d::Array<Tile> getTiles()const override;
 	};
 
 	/// <summary>
@@ -108,7 +108,7 @@ namespace s3dTiled
 		void addImagePath(TileId tileId, const TiledImage& image);
 
 		s3d::TextureRegion getTextureRegion(GId gId, const TiledMap& map) override;
-		s3d::Array<TiledTile> getTiles()const override;
+		s3d::Array<Tile> getTiles()const override;
 	};
 
 } // namespace s3dTiled

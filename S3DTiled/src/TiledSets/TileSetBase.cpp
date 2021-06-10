@@ -142,14 +142,14 @@ namespace s3dTiled
 		return texture({ m_tileSize.x * x, m_tileSize.y * y }, m_tileSize);
 	}
 
-	s3d::Array<TiledTile> UniformTileSet::getTiles() const
+	s3d::Array<Tile> UniformTileSet::getTiles() const
 	{
-		s3d::Array<TiledTile> ret;
+		s3d::Array<Tile> ret;
 		for (TileId tileId = 0; tileId < m_tileCount; ++tileId) {
 			uint32 x = tileId % m_columns;
 			uint32 y = tileId / m_columns;
 
-			ret.push_back(TiledTile{
+			ret.push_back(Tile{
 				.gId = m_firstGId + tileId,
 				.tileId = tileId,
 				.image = m_image,
@@ -177,11 +177,11 @@ namespace s3dTiled
 		return map.loadTexture(m_images[tileId].source);
 	}
 
-	s3d::Array<TiledTile> VariousTileSet::getTiles() const
+	s3d::Array<Tile> VariousTileSet::getTiles() const
 	{
-		s3d::Array<TiledTile> ret;
+		s3d::Array<Tile> ret;
 		for (auto&& [tileId, image] : m_images) {
-			ret.push_back(TiledTile{
+			ret.push_back(Tile{
 				.gId = m_firstGId + tileId,
 				.tileId = tileId,
 				.image = image.source,

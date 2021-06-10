@@ -48,7 +48,7 @@ namespace s3dTiled
 		const TiledSets& getTiledSets() const;
 
 		const s3d::Texture& loadTexture(const s3d::FilePath& imagePath);
-		s3d::Array<TiledTile> getTiles()const;
+		s3d::Array<Tile> getTiles()const;
 		s3d::Array<AnimationFrame> getAnimationFrames()const;
 	};
 } // namespace s3dTiled

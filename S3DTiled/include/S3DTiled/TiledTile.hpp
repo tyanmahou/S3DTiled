@@ -7,7 +7,7 @@
 
 namespace s3dTiled
 {
-	struct TiledTile
+	struct Tile
 	{
 		GId gId;
 		TileId tileId;
@@ -15,7 +15,7 @@ namespace s3dTiled
 		s3d::Vec2 offset;
 		s3d::Vec2 size;
 
-		auto operator <=> (const TiledTile& other) const
+		auto operator <=> (const Tile& other) const
 		{
 			return gId <=> other.gId;
 		}
