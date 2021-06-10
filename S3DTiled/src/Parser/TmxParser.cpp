@@ -249,9 +249,9 @@ namespace
 		}
 
 
-		TiledObject parseObject(const XMLElement& xml)
+		Object parseObject(const XMLElement& xml)
 		{
-			TiledObject obj;
+			Object obj;
 			TiledProperties props;
 
 			obj.id = Parse<uint32>(xml.attribute(U"id").value_or(U"0"));

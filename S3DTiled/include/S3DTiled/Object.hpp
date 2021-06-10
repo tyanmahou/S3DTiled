@@ -10,7 +10,7 @@
 
 namespace s3dTiled
 {
-	struct TiledObject
+	struct Object
 	{
 		s3d::uint32 id;
 		s3d::String name;

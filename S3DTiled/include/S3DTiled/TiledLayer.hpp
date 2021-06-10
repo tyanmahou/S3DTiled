@@ -10,7 +10,7 @@
 
 #include "TiledTypes.hpp"
 #include "TiledProperty.hpp"
-#include "TiledObject.hpp"
+#include "Object.hpp"
 
 namespace s3dTiled
 {
@@ -179,13 +179,13 @@ namespace s3dTiled
 	class ObjectGroup : public TiledLayerBase
 	{
 	private:
-		s3d::Array<TiledObject> m_objects;
+		s3d::Array<Object> m_objects;
 
 	public:
 		ObjectGroup() = default;
 
-		void addObject(TiledObject&& obj);
-		const s3d::Array<TiledObject>& getObjects() const;
+		void addObject(Object&& obj);
+		const s3d::Array<Object>& getObjects() const;
 
 		bool draw(const TiledMap& map, const s3d::Rect& rect) const override;
 

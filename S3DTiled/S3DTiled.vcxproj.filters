@@ -120,7 +120,7 @@
     <ClCompile Include="src\TiledProperty\TiledProperty.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\TiledObject\TiledObject.cpp">
+    <ClCompile Include="src\Object\Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -415,7 +415,7 @@
     <ClInclude Include="include\S3DTiled\TiledMap.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\S3DTiled\TiledObject.hpp">
+    <ClInclude Include="include\S3DTiled\Object.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\S3DTiled\TiledProperty.hpp">

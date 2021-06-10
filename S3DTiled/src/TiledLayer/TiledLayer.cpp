@@ -237,12 +237,12 @@ namespace s3dTiled
 
 	// ObjectGroup
 
-	void ObjectGroup::addObject(TiledObject&& obj)
+	void ObjectGroup::addObject(Object&& obj)
 	{
 		this->m_objects.push_back(std::move(obj));
 	}
 
-	const Array<TiledObject>& ObjectGroup::getObjects() const
+	const Array<Object>& ObjectGroup::getObjects() const
 	{
 		return m_objects;
 	}
