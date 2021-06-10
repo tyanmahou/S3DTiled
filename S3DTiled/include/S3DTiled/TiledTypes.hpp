@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <unordered_map>
 
@@ -20,5 +20,11 @@ namespace s3dTiled
 		Unspecified,
 		Tmx,
 		Json
+	};
+
+	enum class TileSetFileType
+	{
+		Unspecified,
+		Tsx,
 	};
 } // namespace s3dTiled
