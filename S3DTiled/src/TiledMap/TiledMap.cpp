@@ -110,7 +110,7 @@ namespace s3dTiled
 	{
 		return pImpl->getTiles();
 	}
-	s3d::Array<TiledAnimationFrame> TiledMap::getAnimationFrames() const
+	s3d::Array<AnimationFrame> TiledMap::getAnimationFrames() const
 	{
 		return pImpl->getAnimationFrames();
 	}

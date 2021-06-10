@@ -5,7 +5,7 @@
 
 #include <S3DTiled/TiledTypes.hpp>
 #include <S3DTiled/TiledTile.hpp>
-#include <S3DTiled/TiledAnimationFrame.hpp>
+#include <S3DTiled/AnimationFrame.hpp>
 
 namespace s3dTiled
 {
@@ -26,6 +26,6 @@ namespace s3dTiled
 		s3d::Optional<TiledProperty> getProperty(GId gId, const s3d::String& key) const;
 
 		s3d::Array<TiledTile> getTiles()const;
-		s3d::Array<TiledAnimationFrame> getAnimationFrames()const;
+		s3d::Array<AnimationFrame> getAnimationFrames()const;
 	};
 } // namespace s3dTiled

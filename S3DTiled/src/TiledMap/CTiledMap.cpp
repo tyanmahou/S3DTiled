@@ -55,7 +55,7 @@ namespace s3dTiled
     {
 		return m_tiledSets.getTiles();
     }
-	s3d::Array<TiledAnimationFrame> CTiledMap::getAnimationFrames() const
+	s3d::Array<AnimationFrame> CTiledMap::getAnimationFrames() const
 	{
 		return m_tiledSets.getAnimationFrames();
 	}

@@ -430,5 +430,8 @@
     <ClInclude Include="include\S3DTiled\TiledTile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\S3DTiled\AnimationFrame.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

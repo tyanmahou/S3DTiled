@@ -7,12 +7,12 @@
 
 namespace s3dTiled
 {
-	struct TiledAnimationFrame
+	struct AnimationFrame
 	{
 		GId from;
 		GId to;
 		s3d::int32 duration;
 
-		auto operator <=>(const TiledAnimationFrame& other) const = default;
+		auto operator <=>(const AnimationFrame& other) const = default;
 	};
 } // namespace s3dTiled

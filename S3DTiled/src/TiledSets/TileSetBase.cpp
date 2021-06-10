@@ -95,11 +95,11 @@ namespace s3dTiled
 		return m_tileCount;
 	}
 
-	s3d::Array<TiledAnimationFrame> TileSetBase::getAnimationFrames() const
+	s3d::Array<AnimationFrame> TileSetBase::getAnimationFrames() const
 	{
-		s3d::Array<TiledAnimationFrame> ret;
+		s3d::Array<AnimationFrame> ret;
 		for (auto&& [from, animation] : m_animations) {
-			TiledAnimationFrame frame;
+			AnimationFrame frame;
 			frame.from= from + m_firstGId;
 			for (auto&& f : animation.getFrames()) {
 				frame.to = f.first + m_firstGId;

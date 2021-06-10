@@ -4,7 +4,7 @@
 #include <unordered_map>
 
 #include <S3DTiled/TiledTile.hpp>
-#include <S3DTiled/TiledAnimationFrame.hpp>
+#include <S3DTiled/AnimationFrame.hpp>
 #include <S3DTiled/TiledTypes.hpp>
 #include <S3DTiled/TiledProperty.hpp>
 
@@ -66,7 +66,7 @@ namespace s3dTiled
 		GId getFirstGId() const;
 
 		s3d::uint32 getTileCount() const;
-		s3d::Array<TiledAnimationFrame> getAnimationFrames()const;
+		s3d::Array<AnimationFrame> getAnimationFrames()const;
 
 		bool isContain(GId gId) const;
 

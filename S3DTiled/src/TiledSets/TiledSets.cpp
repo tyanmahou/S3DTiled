@@ -39,9 +39,9 @@ namespace s3dTiled
 			}
 			return ret;
 		}
-		s3d::Array<TiledAnimationFrame> getAnimationFrames() const
+		s3d::Array<AnimationFrame> getAnimationFrames() const
 		{
-			s3d::Array<TiledAnimationFrame> ret;
+			s3d::Array<AnimationFrame> ret;
 			for (const auto& tileSet : m_tileSets) {
 				ret.append(tileSet->getAnimationFrames());
 			}
@@ -73,7 +73,7 @@ namespace s3dTiled
 		return pImpl->getTiles();
 	}
 
-	s3d::Array<TiledAnimationFrame> TiledSets::getAnimationFrames() const
+	s3d::Array<AnimationFrame> TiledSets::getAnimationFrames() const
 	{
 		return pImpl->getAnimationFrames();
 	}
