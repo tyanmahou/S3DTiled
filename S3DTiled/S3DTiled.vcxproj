@@ -112,6 +112,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Animation\Animation.cpp" />
     <ClCompile Include="src\Parser\TiledReader.cpp" />
     <ClCompile Include="src\Parser\TmxParser.cpp" />
     <ClCompile Include="src\Layer\Layer.cpp" />
@@ -119,8 +120,10 @@
     <ClCompile Include="src\TiledMap\TiledMap.cpp" />
     <ClCompile Include="src\Object\Object.cpp" />
     <ClCompile Include="src\Property\Property.cpp" />
-    <ClCompile Include="src\TiledSets\TiledSets.cpp" />
     <ClCompile Include="src\TiledSets\TileSetBase.cpp" />
+    <ClCompile Include="src\TileSet\TileSet.cpp" />
+    <ClCompile Include="src\TileSet\CTileSet.cpp" />
+    <ClCompile Include="src\TileSet\TileSetList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
@@ -246,19 +249,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\S3DTiled.hpp" />
-    <ClInclude Include="include\S3DTiled\AnimationFrame.hpp" />
     <ClInclude Include="include\S3DTiled\Layer.hpp" />
     <ClInclude Include="include\S3DTiled\TiledMap.hpp" />
     <ClInclude Include="include\S3DTiled\Object.hpp" />
     <ClInclude Include="include\S3DTiled\Property.hpp" />
     <ClInclude Include="include\S3DTiled\Shape.hpp" />
     <ClInclude Include="include\S3DTiled\Tile.hpp" />
+    <ClInclude Include="include\S3DTiled\TileSet.hpp" />
     <ClInclude Include="include\S3DTiled\Types.hpp" />
     <ClInclude Include="src\Parser\TiledParser.hpp" />
     <ClInclude Include="src\Parser\TiledReader.hpp" />
     <ClInclude Include="src\TiledMap\CTiledMap.hpp" />
-    <ClInclude Include="src\TiledSets\TiledSets.hpp" />
-    <ClInclude Include="src\TiledSets\TileSetBase.hpp" />
+    <ClInclude Include="include\S3DTiled\Animation.hpp" />
+    <ClInclude Include="src\TileSet\CTileSet.hpp" />
+    <ClInclude Include="src\TileSet\TileSetList.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

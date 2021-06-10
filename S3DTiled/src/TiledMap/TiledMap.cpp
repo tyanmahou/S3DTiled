@@ -62,40 +62,40 @@ namespace s3dTiled
 		return pImpl->m_layers[pImpl->m_layerCache.at(name)];
 	}
 
-	TextureRegion TiledMap::getTile(GId gId) const
+	TextureRegion TiledMap::getTileTexture(GId gId, double timeSec) const
 	{
-		return pImpl->m_tiledSets.getTile(gId, *this);
+		return pImpl->getTileTexture(gId, timeSec);
 	}
 
 	Optional<Property> TiledMap::getTileProperty(GId gId, const String& key) const
 	{
-		return pImpl->m_tiledSets.getProperty(gId, key);
+		return pImpl->m_tileSet.getProperty(gId, key);
 	}
 
-	bool TiledMap::drawLayer(const String& name, const Rect& rect) const
+	bool TiledMap::drawLayer(const String& name, const Rect& rect, double timeSec) const
 	{
 		auto&& layer = this->getLayer(name);
 		if (!layer) {
 
 			return false;
 		}
-		return layer->draw(*this, rect);
+		return layer->draw(*this, rect, timeSec);
 	}
 
-	void TiledMap::draw(const Rect& rect) const
+	void TiledMap::draw(const Rect& rect, double timeSec) const
 	{
 		pImpl->m_backGroundColor.then([&](Color bgColor) {
 			rect.draw(bgColor);
 		});
 
 		for (const auto& layer : pImpl->m_layers) {
-			layer.draw(*this, rect);
+			layer.draw(*this, rect, timeSec);
 		}
 	}
 
-	void TiledMap::draw() const
+	void TiledMap::draw(double timeSec) const
 	{
-		this->draw(pImpl->getRect());
+		this->draw(pImpl->getRect(), timeSec);
 	}
 
 	TiledMap::operator bool() const
@@ -106,16 +106,13 @@ namespace s3dTiled
 	{
 		return pImpl->loadTexture(imagePath);
 	}
-	s3d::Array<Tile> TiledMap::getTiles() const
-	{
-		return pImpl->getTiles();
-	}
-	s3d::Array<AnimationFrame> TiledMap::getAnimationFrames() const
-	{
-		return pImpl->getAnimationFrames();
-	}
+
 	const s3d::Optional<s3d::Color>& TiledMap::getBackGroundColor() const
 	{
 		return pImpl->getBackGroundColor();
+	}
+	const s3d::Array<std::pair<GId, TileSet>>& TiledMap::getTileSets() const
+	{
+		return pImpl->getTileSets();
 	}
 } // namespace s3dTiled

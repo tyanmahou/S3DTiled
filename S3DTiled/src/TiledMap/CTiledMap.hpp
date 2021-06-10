@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../TiledSets/TiledSets.hpp"
+#include "../TileSet/TileSetList.hpp"
 
 #include <S3DTiled/Layer.hpp>
 #include <S3DTiled/Property.hpp>
@@ -20,7 +20,7 @@ namespace s3dTiled
 	{
 		friend class TiledMap;
 	private:
-		TiledSets m_tiledSets;
+		TileSetList m_tileSet;
 		Properties m_props;
 
 		s3d::Size m_mapSize;
@@ -31,9 +31,9 @@ namespace s3dTiled
 		// TODO(@tyanmahou): renderorder
 
 		s3d::Array<Layer> m_layers;
-		std::unordered_map<s3d::String, std::size_t> m_layerCache; // レイヤーへの名前検索をO(1)にする
+		s3d::HashTable<s3d::String, std::size_t> m_layerCache; // レイヤーへの名前検索をO(1)にする
 
-		std::unordered_map<s3d::FilePath, s3d::Texture> m_textures;
+		s3d::HashTable<s3d::FilePath, s3d::Texture> m_textures;
 	public:
 		CTiledMap(const s3d::Size& mapSize, const s3d::Size& tileSize);
 
@@ -41,14 +41,13 @@ namespace s3dTiled
 
 		const s3d::Optional<s3d::Color>& getBackGroundColor()const;
 		void setBackGroundColor(const s3d::Color& color);
-		void addTileSet(std::unique_ptr<TileSetBase>&& tileSet);
+		void addTileSet(GId firstGId, const TileSet& tileSet);
 		void setProps(Properties&& props);
 		void addLayer(const Layer& layer);
 
-		const TiledSets& getTiledSets() const;
-
+		s3d::TextureRegion getTileTexture(GId gId, double timeSec);
 		const s3d::Texture& loadTexture(const s3d::FilePath& imagePath);
-		s3d::Array<Tile> getTiles()const;
-		s3d::Array<AnimationFrame> getAnimationFrames()const;
+
+		const s3d::Array<std::pair<GId, TileSet>>& getTileSets() const;
 	};
 } // namespace s3dTiled

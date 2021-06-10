@@ -1,4 +1,5 @@
 #include "CTiledMap.hpp"
+#include <Siv3D/TextureRegion.hpp>
 
 namespace s3dTiled
 {
@@ -6,7 +7,6 @@ namespace s3dTiled
 		m_mapSize(mapSize),
 		m_tileSize(tileSize)
 	{}
-
 
 	s3d::Rect CTiledMap::getRect() const
 	{
@@ -23,9 +23,9 @@ namespace s3dTiled
 		m_backGroundColor = color;
 	}
 
-	void CTiledMap::addTileSet(std::unique_ptr<TileSetBase>&& tileSet)
+	void CTiledMap::addTileSet(GId firstGId, const TileSet& tileSet)
 	{
-		m_tiledSets.addTileSet(std::move(tileSet));
+		m_tileSet.add(firstGId, tileSet);
 	}
 
 	void CTiledMap::setProps(Properties&& props)
@@ -40,23 +40,21 @@ namespace s3dTiled
 
 		m_layers.push_back(layer);
 	}
-	const TiledSets& CTiledMap::getTiledSets() const
+	s3d::TextureRegion CTiledMap::getTileTexture(GId gId, double timeSec)
 	{
-		return m_tiledSets;
+		const auto& tile = m_tileSet.getTile(gId, timeSec);
+		const auto& tex = this->loadTexture(tile.image);
+		return tex(tile.offset, tile.size);
 	}
-    const s3d::Texture& CTiledMap::loadTexture(const s3d::FilePath& imagePath)
+	const s3d::Texture& CTiledMap::loadTexture(const s3d::FilePath& imagePath)
     {
 		if (m_textures.find(imagePath) != m_textures.end()) {
 			return m_textures[imagePath];
 		}
 		return m_textures[imagePath] = s3d::Texture(imagePath);
     }
-    s3d::Array<Tile> CTiledMap::getTiles() const
-    {
-		return m_tiledSets.getTiles();
-    }
-	s3d::Array<AnimationFrame> CTiledMap::getAnimationFrames() const
+	const s3d::Array<std::pair<GId, TileSet>>& CTiledMap::getTileSets() const
 	{
-		return m_tiledSets.getAnimationFrames();
+		return m_tileSet.getTileSets();
 	}
 } // namespace s3dTiled

@@ -3,6 +3,7 @@
 #include <unordered_map>
 
 #include <Siv3D/Fwd.hpp>
+#include <Siv3D/HashTable.hpp>
 
 namespace s3dTiled
 {
@@ -10,7 +11,7 @@ namespace s3dTiled
 	using TileId = s3d::uint32;
 
 	class Property;
-	using Properties = std::unordered_map<s3d::String, Property>;
+	using Properties = s3d::HashTable<s3d::String, Property>;
 
 	/// <summary>
 	/// Tiledのファイル形式

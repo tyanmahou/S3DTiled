@@ -15,9 +15,9 @@ namespace s3dTiled
 		pImpl(layer)
 	{}
 
-	bool Layer::draw(const TiledMap& map, const Rect& rect) const
+	bool Layer::draw(const TiledMap& map, const Rect& rect, double timeSec) const
 	{
-		return pImpl->draw(map, rect);
+		return pImpl->draw(map, rect, timeSec);
 	}
 
 	LayerType Layer::getType() const
@@ -163,7 +163,7 @@ namespace s3dTiled
 		return s3d::Texture(m_image);
 	}
 
-	bool ImageLayer::draw(const TiledMap& map, const Rect& rect) const
+	bool ImageLayer::draw(const TiledMap& map, const Rect& rect, [[maybe_unused]]double timeSec) const
 	{
 		if (!m_visible) {
 			return false;
@@ -195,7 +195,7 @@ namespace s3dTiled
 		return m_gIds;
 	}
 
-	bool TileLayer::draw(const TiledMap& map, const Rect& rect) const
+	bool TileLayer::draw(const TiledMap& map, const Rect& rect, double timeSec) const
 	{
 		if (!m_visible) {
 			return false;
@@ -214,7 +214,7 @@ namespace s3dTiled
 				if (gId <= 0) {
 					continue;
 				}
-				auto&& texture = map.getTile(gId);
+				auto&& texture = map.getTileTexture(gId, timeSec);
 				Vec2 pos = { x * tileSize.x, y * tileSize.y };
 				// 座標の調整
 				pos.y -= (texture.size.y - tileSize.y);
@@ -247,14 +247,14 @@ namespace s3dTiled
 		return m_objects;
 	}
 
-	bool ObjectGroup::draw(const TiledMap& map, const Rect& rect) const
+	bool ObjectGroup::draw(const TiledMap& map, const Rect& rect, double timeSec) const
 	{
 		if (!m_visible) {
 			return false;
 		}
 		for (auto&& obj : m_objects) {
 			if (obj.gId) {
-				auto&& texture = map.getTile(obj.gId.value())
+				auto&& texture = map.getTileTexture(obj.gId.value(), timeSec)
 					.mirrored(obj.isMirrored)
 					.flipped(obj.isFliped);
 
@@ -300,10 +300,10 @@ namespace s3dTiled
 	{
 		return m_layers;
 	}
-	bool GroupLayer::draw(const TiledMap& map, const Rect& rect) const
+	bool GroupLayer::draw(const TiledMap& map, const Rect& rect, double timeSec) const
 	{
 		for (auto&& layer: m_layers) {
-			layer.draw(map, rect);
+			layer.draw(map, rect, timeSec);
 		}
 		return true;
 	}

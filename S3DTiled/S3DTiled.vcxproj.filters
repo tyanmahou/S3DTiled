@@ -111,9 +111,6 @@
     <ClCompile Include="src\TiledMap\CTiledMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\TiledSets\TiledSets.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\TiledSets\TileSetBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -121,6 +118,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Object\Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TileSet\TileSet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TileSet\TileSetList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Animation\Animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TileSet\CTileSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -400,12 +409,6 @@
     <ClInclude Include="src\TiledMap\CTiledMap.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\TiledSets\TiledSets.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\TiledSets\TileSetBase.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\S3DTiled.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -430,7 +433,16 @@
     <ClInclude Include="include\S3DTiled\Tile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\S3DTiled\AnimationFrame.hpp">
+    <ClInclude Include="include\S3DTiled\TileSet.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TileSet\TileSetList.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\S3DTiled\Animation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TileSet\CTileSet.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

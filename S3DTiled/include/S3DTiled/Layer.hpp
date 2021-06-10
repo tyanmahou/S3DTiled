@@ -7,6 +7,7 @@
 #include<Siv3D/Grid.hpp>
 #include <Siv3D/String.hpp>
 #include <Siv3D/Vector2D.hpp>
+#include <Siv3D/Scene.hpp>
 
 #include "Types.hpp"
 #include "Property.hpp"
@@ -48,7 +49,7 @@ namespace s3dTiled
 		/// <param name="map">タイルマップ</param>
 		/// <param name="rect">描画領域</param>
 		/// <returns>true: 成功 false:失敗</returns>
-		bool draw(const TiledMap& map, const s3d::Rect& rect) const;
+		bool draw(const TiledMap& map, const s3d::Rect& rect, double timeSec = s3d::Scene::Time()) const;
 
 		/// <summary>
 		/// レイヤータイプを取得
@@ -124,7 +125,7 @@ namespace s3dTiled
 		LayerBase() = default;
 
 		virtual ~LayerBase() = default;
-		virtual bool draw(const TiledMap& map, const s3d::Rect& rect) const = 0;
+		virtual bool draw(const TiledMap& map, const s3d::Rect& rect, double timeSec) const = 0;
 		virtual LayerType getType() const = 0;
 
 		void setVisible(bool visible);
@@ -153,7 +154,7 @@ namespace s3dTiled
 		const s3d::FilePath& getImagePath()const;
 		s3d::Texture createTexture() const;
 
-		bool draw(const TiledMap& map, const s3d::Rect& rect) const override;
+		bool draw(const TiledMap& map, const s3d::Rect& rect, double timeSec) const override;
 		LayerType getType() const override;
 	};
 
@@ -169,7 +170,7 @@ namespace s3dTiled
 		void setGrid(s3d::Grid<GId>&& grid);
 		const s3d::Grid<GId>& getGrid() const;
 
-		bool draw(const TiledMap& map, const s3d::Rect& rect) const override;
+		bool draw(const TiledMap& map, const s3d::Rect& rect, double timeSec) const override;
 		LayerType getType() const override;
 	};
 
@@ -187,7 +188,7 @@ namespace s3dTiled
 		void addObject(Object&& obj);
 		const s3d::Array<Object>& getObjects() const;
 
-		bool draw(const TiledMap& map, const s3d::Rect& rect) const override;
+		bool draw(const TiledMap& map, const s3d::Rect& rect, double timeSec) const override;
 
 		LayerType getType() const override;
 	};
@@ -206,7 +207,7 @@ namespace s3dTiled
 		s3d::Optional<Layer> getLayer(const s3d::String& name)const;
 		const s3d::Array<Layer>&  getLayers() const;
 
-		bool draw(const TiledMap& map, const s3d::Rect& rect) const override;
+		bool draw(const TiledMap& map, const s3d::Rect& rect, double timeSec) const override;
 
 		LayerType getType() const override;
 	};
