@@ -4,7 +4,7 @@
 #include <Siv3D/Array.hpp>
 
 #include "AnimationFrame.hpp"
-#include "TiledTile.hpp"
+#include "Tile.hpp"
 #include "TiledTypes.hpp"
 
 namespace s3dTiled

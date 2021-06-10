@@ -427,7 +427,7 @@
     <ClInclude Include="include\S3DTiled\TiledTypes.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\S3DTiled\TiledTile.hpp">
+    <ClInclude Include="include\S3DTiled\Tile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\S3DTiled\AnimationFrame.hpp">
