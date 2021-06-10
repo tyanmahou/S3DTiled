@@ -397,9 +397,14 @@ namespace
             auto tileSet = std::make_unique<CTileSet>();
             this->parseTileSetCommon(tileSet.get(), xml);
 
+            auto tileCount = tileSet->getTileCount();
+
             for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
                 if (elm.name() == U"tile") {
                     TileId tileId = Parse<TileId>(elm.attribute(U"id").value_or(U"0"));
+
+                    // タイル数よりIdのほうが多いときある
+                    tileCount = s3d::Max(tileCount, tileId + 1u);
                     Tile tile{};
                     tile.tileId = tileId;
                     this->tryParseTileInfo(&tile, elm);
@@ -417,6 +422,7 @@ namespace
                     }
                 }
             }
+            tileSet->setTileCount(tileCount);
             return tileSet;
         }
 #pragma endregion
