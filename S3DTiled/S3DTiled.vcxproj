@@ -113,8 +113,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Animation\Animation.cpp" />
-    <ClCompile Include="src\Parser\TiledReader.cpp" />
-    <ClCompile Include="src\Parser\TmxParser.cpp" />
+    <ClCompile Include="src\Parser\FileUtil.cpp" />
+    <ClCompile Include="src\Parser\TiledMapReader.cpp" />
+    <ClCompile Include="src\Parser\TiledParser.cpp" />
     <ClCompile Include="src\Layer\Layer.cpp" />
     <ClCompile Include="src\TiledMap\CTiledMap.cpp" />
     <ClCompile Include="src\TiledMap\TiledMap.cpp" />
@@ -256,8 +257,9 @@
     <ClInclude Include="include\S3DTiled\Tile.hpp" />
     <ClInclude Include="include\S3DTiled\TileSet.hpp" />
     <ClInclude Include="include\S3DTiled\Types.hpp" />
+    <ClInclude Include="src\Parser\FileUtil.hpp" />
     <ClInclude Include="src\Parser\TiledParser.hpp" />
-    <ClInclude Include="src\Parser\TiledReader.hpp" />
+    <ClInclude Include="src\Parser\TiledMapReader.hpp" />
     <ClInclude Include="src\TiledMap\CTiledMap.hpp" />
     <ClInclude Include="include\S3DTiled\Animation.hpp" />
     <ClInclude Include="src\TileSet\CTileSet.hpp" />

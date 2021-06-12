@@ -1,5 +1,5 @@
 
-#include "../Parser/TiledReader.hpp"
+#include "../Parser/TiledMapReader.hpp"
 #include "CTiledMap.hpp"
 
 #include <S3DTiled/TiledMap.hpp>
@@ -19,7 +19,7 @@ namespace s3dTiled
 
 	TiledMap::TiledMap(s3d::FilePathView path, TiledMapFileType fileType)
 	{
-		TiledReader reader(path, fileType);
+		TiledMapReader reader(path, fileType);
 		if (!reader) {
 			return;
 		}
@@ -28,7 +28,7 @@ namespace s3dTiled
 
 	bool TiledMap::open(s3d::FilePathView path, TiledMapFileType fileType)
 	{
-		TiledReader reader(path, fileType);
+		TiledMapReader reader(path, fileType);
 		if (!reader) {
 			return false;
 		}

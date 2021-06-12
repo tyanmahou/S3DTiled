@@ -96,10 +96,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Parser\TiledReader.cpp">
+    <ClCompile Include="src\Parser\TiledMapReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Parser\TmxParser.cpp">
+    <ClCompile Include="src\Parser\TiledParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Layer\Layer.cpp">
@@ -127,6 +127,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\TileSet\CTileSet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Parser\FileUtil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -400,7 +403,7 @@
     <ClInclude Include="src\Parser\TiledParser.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Parser\TiledReader.hpp">
+    <ClInclude Include="src\Parser\TiledMapReader.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\TiledMap\CTiledMap.hpp">
@@ -440,6 +443,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\TileSet\CTileSet.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Parser\FileUtil.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
