@@ -47,5 +47,5 @@ namespace s3dTiled
     {
 		return pImpl->m_tileSet;
     }
-}
+} // namespace s3dTiled
 

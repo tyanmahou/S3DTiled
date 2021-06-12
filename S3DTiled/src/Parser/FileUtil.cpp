@@ -51,4 +51,4 @@ namespace s3dTiled::FileUtil
 		auto basePath = ::IsResourcePath(path) ? path.substr(1) : path;
 		return s3d::FileSystem::Extension(basePath);
 	}
-}
+} // namespace s3dTiled::FileUtil
