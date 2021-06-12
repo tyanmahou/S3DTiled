@@ -81,7 +81,7 @@ namespace
             }
             this->m_parentPath = FileUtil::ParentPath(path);
             for (XMLElement elm = std::move(root); elm; elm = elm.nextSibling()) {
-                if (auto&& tileSet = this->tryTileSet(root)) {
+                if (auto&& tileSet = this->tryTileSet(elm)) {
                     return tileSet;
                 }
             }
