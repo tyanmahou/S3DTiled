@@ -1,5 +1,6 @@
 #include <S3DTiled/TileSet.hpp>
 #include "CTileSet.hpp"
+#include "../Parser/TileSetReader.hpp"
 
 namespace s3dTiled
 {
@@ -7,10 +8,17 @@ namespace s3dTiled
         pImpl(tileSet)
     {}
     TileSet::TileSet(s3d::FilePathView path, TileSetFileType fileType)
-    {}
+    {
+        this->open(path, fileType);
+    }
     bool TileSet::open(s3d::FilePathView path, TileSetFileType fileType)
     {
-        return false;
+        TileSetReader reader(path, fileType);
+        if (!reader) {
+            return false;
+        }
+        this->pImpl = reader.getTileSet();
+        return true;
     }
     s3d::uint32 TileSet::getTileCount() const
     {

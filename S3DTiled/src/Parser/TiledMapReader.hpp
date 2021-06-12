@@ -29,7 +29,7 @@ namespace s3dTiled
 
 		bool open(s3d::FilePathView path, TiledMapFileType fileType = TiledMapFileType::Unspecified);
 
-		operator bool() const;
+		explicit operator bool() const;
 
 		std::shared_ptr<CTiledMap> getTiledMap() const;
 	};

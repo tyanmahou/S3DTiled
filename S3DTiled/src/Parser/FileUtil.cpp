@@ -2,6 +2,13 @@
 #include <stack>
 #include <Siv3D/FileSystem.hpp>
 
+namespace
+{
+	bool IsResourcePath(const s3d::FilePathView path)
+	{
+		return path.starts_with(U'/');
+	}
+}
 namespace s3dTiled::FileUtil
 {
 	s3d::FilePath FixRelativePath(s3d::FilePathView path)
@@ -32,10 +39,16 @@ namespace s3dTiled::FileUtil
 
     s3d::FilePath ParentPath(s3d::FilePathView path)
     {
-		if (s3d::FileSystem::IsResource(path)) {
+		if (::IsResourcePath(path)) {
 			return U"/" + s3d::FileSystem::RelativePath(s3d::FileSystem::ParentPath(path.substr(1)));
 		} else {
 			return s3d::FileSystem::RelativePath(s3d::FileSystem::ParentPath(path));
 		}
     }
+
+	s3d::String Extension(s3d::FilePathView path)
+	{
+		auto basePath = ::IsResourcePath(path) ? path.substr(1) : path;
+		return s3d::FileSystem::Extension(basePath);
+	}
 }

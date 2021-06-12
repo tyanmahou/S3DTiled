@@ -1,5 +1,6 @@
 #include "TiledMapReader.hpp"
 #include "TiledParser.hpp"
+#include "FileUtil.hpp"
 #include "../TiledMap/CTiledMap.hpp"
 
 #include <S3DTiled/TiledMap.hpp>
@@ -19,8 +20,7 @@ namespace s3dTiled
 
 		bool open(s3d::FilePathView path, TiledMapFileType fileType)
 		{
-			auto basePath = FileSystem::IsResource(path) ? path.substr(1) : path;
-			auto ext = FileSystem::Extension(basePath);
+			auto ext = FileUtil::Extension(path);
 			if (fileType == TiledMapFileType::Tmx || ext == U"tmx") {
 				m_map = ParseTmx(path);
 			} else if (fileType == TiledMapFileType::Json || ext == U"json") {

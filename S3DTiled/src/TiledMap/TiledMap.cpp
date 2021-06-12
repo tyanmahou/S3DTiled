@@ -19,11 +19,7 @@ namespace s3dTiled
 
 	TiledMap::TiledMap(s3d::FilePathView path, TiledMapFileType fileType)
 	{
-		TiledMapReader reader(path, fileType);
-		if (!reader) {
-			return;
-		}
-		this->pImpl = reader.getTiledMap();
+		this->open(path, fileType);
 	}
 
 	bool TiledMap::open(s3d::FilePathView path, TiledMapFileType fileType)
