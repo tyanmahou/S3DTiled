@@ -1,12 +1,6 @@
 #include "TiledMapReader.hpp"
 #include "TiledParser.hpp"
 #include "FileUtil.hpp"
-#include "../TiledMap/CTiledMap.hpp"
-
-#include <S3DTiled/TiledMap.hpp>
-
-#include <Siv3D/String.hpp>
-#include <Siv3D/FileSystem.hpp>
 
 namespace s3dTiled
 {
