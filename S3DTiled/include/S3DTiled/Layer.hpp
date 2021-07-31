@@ -70,6 +70,12 @@ namespace s3dTiled
 		const s3d::String& getName() const;
 
 		/// <summary>
+		/// パララックス係数取得
+		/// </summary>
+		/// <returns></returns>
+		const s3d::Vec2 getParallax() const;
+
+		/// <summary>
 		/// プロパティを取得
 		/// </summary>
 		s3d::Optional<Property> getProperty(const s3d::String& key) const;
@@ -118,6 +124,7 @@ namespace s3dTiled
 	protected:
 		s3d::int32 m_id;
 		s3d::String m_name;
+		s3d::Vec2 m_parallax;
 		s3d::Vec2 m_offset;
 		Properties m_props;
 		bool m_visible = true;
@@ -139,6 +146,9 @@ namespace s3dTiled
 		void setName(const s3d::String& name);
 		const s3d::String& getName() const;
 
+		void setParallax(const s3d::Vec2& parallax);
+		const s3d::Vec2& getParallax() const;
+		
 		void setOffset(const s3d::Vec2& offset);
 		const s3d::Vec2& getOffset() const;
 	};

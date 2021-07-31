@@ -38,6 +38,11 @@ namespace s3dTiled
 		return this->pImpl->getName();
 	}
 
+	const s3d::Vec2 Layer::getParallax() const
+	{
+		return this->pImpl->getParallax();
+	}
+
 	Optional<Property> Layer::getProperty(const String& key) const
 	{
 		return pImpl->getProperty(key);
@@ -135,6 +140,14 @@ namespace s3dTiled
 	const String& LayerBase::getName() const
 	{
 		return m_name;
+	}
+	void LayerBase::setParallax(const s3d::Vec2& parallax)
+	{
+		this->m_parallax = parallax;
+	}
+	const s3d::Vec2& LayerBase::getParallax() const
+	{
+		return m_parallax;
 	}
 	void LayerBase::setOffset(const Vec2& offset)
 	{

@@ -114,6 +114,10 @@ namespace
             layer->setId(Parse<s3d::uint32>(xml.attribute(U"id").value_or(U"0")));
             layer->setName(xml.attribute(U"name").value_or(U""));
             layer->setVisible(static_cast<bool>(Parse<s3d::int32>(xml.attribute(U"visible").value_or(U"1"))));
+            layer->setParallax({
+                Parse<double>(xml.attribute(U"parallaxx").value_or(U"1.0")),
+                Parse<double>(xml.attribute(U"parallaxy").value_or(U"1.0"))
+                });
             layer->setOffset({
                 Parse<double>(xml.attribute(U"offsetx").value_or(U"0.0")),
                 Parse<double>(xml.attribute(U"offsety").value_or(U"0.0"))
