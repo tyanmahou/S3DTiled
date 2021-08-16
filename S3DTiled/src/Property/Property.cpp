@@ -45,6 +45,9 @@ namespace s3dTiled
 	{
 		m_storage.str = new String(str);
 	}
+	Property::Property(const s3d::String::value_type* rawStr):
+		Property(String(rawStr))
+	{}
 	Property::~Property()
 	{
 		this->clear();

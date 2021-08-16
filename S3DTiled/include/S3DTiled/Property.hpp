@@ -42,6 +42,7 @@ namespace s3dTiled
 			Property(double f);
 			Property(s3d::int32 i);
 			Property(const s3d::String& str);
+			Property(const s3d::String::value_type* rawStr);
 
 			~Property();
 

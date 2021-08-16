@@ -262,6 +262,7 @@
     <ClInclude Include="src\Parser\TiledParser.hpp" />
     <ClInclude Include="src\Parser\TiledMapReader.hpp" />
     <ClInclude Include="src\Parser\TileSetReader.hpp" />
+    <ClInclude Include="src\Parser\TsxParser.hpp" />
     <ClInclude Include="src\TiledMap\CTiledMap.hpp" />
     <ClInclude Include="include\S3DTiled\Animation.hpp" />
     <ClInclude Include="src\TileSet\CTileSet.hpp" />
