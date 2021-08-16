@@ -65,6 +65,8 @@ namespace s3dTiled
 
 			void clear();
 
+			bool isNone() const;
+
 			Property& operator =(const Property& other);
 			Property& operator =(Property&& other) noexcept;
 		};

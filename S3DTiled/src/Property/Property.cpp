@@ -121,6 +121,10 @@ namespace s3dTiled
 		}
 		this->m_type = Type::None;
 	}
+	bool Property::isNone() const
+	{
+		return m_type == Type::None;
+	}
 	void Property::reset(Type type)
 	{
 		if (m_type == type) {

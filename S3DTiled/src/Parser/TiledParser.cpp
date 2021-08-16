@@ -212,7 +212,9 @@ namespace
 
             for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
                 if (elm.name() == U"property") {
-                    ret[elm.attribute(U"name").value_or(U"")] = this->parseProp(elm);
+                    if (auto&& prop = this->parseProp(elm); !prop.isNone()) {
+                        ret[elm.attribute(U"name").value_or(U"")] = std::move(prop);
+                    }
                 }
             }
             return ret;
@@ -226,6 +228,10 @@ namespace
             if (type == U"bool") {
                 return Parse<bool>(value);
             } else if (type == U"color") {
+                if (value == U"") {
+                    // 未設定
+                    return Property{};
+                }
                 return ParseTiledColor(value);
             } else if (type == U"float") {
                 return Parse<double>(value);
