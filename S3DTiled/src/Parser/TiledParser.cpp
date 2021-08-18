@@ -53,7 +53,9 @@ namespace
                 Parse<int32>(root.attribute(U"tilewidth").value_or(U"0")),
                 Parse<int32>(root.attribute(U"tileheight").value_or(U"0"))
             };
-            m_map = std::make_shared<CTiledMap>(mapSize, tileSize);
+            bool isInfinte = Parse<int32>(root.attribute(U"infinite").value_or(U"0")) == 1;
+
+            m_map = std::make_shared<CTiledMap>(mapSize, tileSize, isInfinte);
 
             if (auto&& col = root.attribute(U"backgroundcolor")) {
                 m_map->setBackGroundColor(ParseTiledColor(root.attribute(U"backgroundcolor").value()));

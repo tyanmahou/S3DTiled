@@ -3,9 +3,10 @@
 
 namespace s3dTiled
 {
-	CTiledMap::CTiledMap(const s3d::Size& mapSize, const s3d::Size& tileSize) :
+	CTiledMap::CTiledMap(const s3d::Size& mapSize, const s3d::Size& tileSize, bool isInfinite) :
 		m_mapSize(mapSize),
-		m_tileSize(tileSize)
+		m_tileSize(tileSize),
+		m_isInfinite(isInfinite)
 	{}
 
 	s3d::Rect CTiledMap::getRect() const

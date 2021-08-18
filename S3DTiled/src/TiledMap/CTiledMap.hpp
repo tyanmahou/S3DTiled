@@ -25,6 +25,7 @@ namespace s3dTiled
 
 		s3d::Size m_mapSize;
 		s3d::Size m_tileSize;
+		bool m_isInfinite = false;
 
 		s3d::Optional<s3d::Color> m_backGroundColor;
 		// TODO(@tyanmahou): orientation
@@ -35,9 +36,10 @@ namespace s3dTiled
 
 		s3d::HashTable<s3d::FilePath, s3d::Texture> m_textures;
 	public:
-		CTiledMap(const s3d::Size& mapSize, const s3d::Size& tileSize);
+		CTiledMap(const s3d::Size& mapSize, const s3d::Size& tileSize, bool isInfinite);
 
 		s3d::Rect getRect() const;
+		bool isInfinite() const { return m_isInfinite; }
 
 		const s3d::Optional<s3d::Color>& getBackGroundColor()const;
 		void setBackGroundColor(const s3d::Color& color);
