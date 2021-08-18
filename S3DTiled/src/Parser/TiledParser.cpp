@@ -31,7 +31,7 @@ namespace
     struct EditorSettings
     {
         EditorSettings():
-            chunksize(1, 1)
+            chunksize(16, 16)
         {}
         s3d::Size chunksize;
     };
@@ -110,8 +110,8 @@ namespace
             for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
                 if (elm.name() == U"chunksize") {
                     m_editorSetting.chunksize = Size{
-                        Parse<int32>(elm.attribute(U"width").value_or(U"1")),
-                        Parse<int32>(elm.attribute(U"height").value_or(U"1"))
+                        Parse<int32>(elm.attribute(U"width").value_or(U"16")),
+                        Parse<int32>(elm.attribute(U"height").value_or(U"16"))
                     };
                 }
             }
