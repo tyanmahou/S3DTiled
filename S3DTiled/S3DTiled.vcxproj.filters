@@ -457,5 +457,8 @@
     <ClInclude Include="src\Parser\TsxParser.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\S3DTiled\Chunk.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

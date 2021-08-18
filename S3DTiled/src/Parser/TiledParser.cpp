@@ -28,11 +28,19 @@ namespace
         ret.setA(Parse<uint32>(U"0x" + str.substr(1, 2)));
         return ret;
     }
+    struct EditorSettings
+    {
+        EditorSettings():
+            chunksize(1, 1)
+        {}
+        s3d::Size chunksize;
+    };
 
     class TmxParser
     {
         FilePath m_parentPath;
         std::shared_ptr<CTiledMap> m_map;
+        EditorSettings m_editorSetting;
     public:
         TmxParser() = default;
 
@@ -68,6 +76,8 @@ namespace
                     m_map->addTileSet(firstGId, TileSet(tileSet));
                 } else if (elm.name() == U"properties") {
                     m_map->setProps(this->parseProps(elm));
+                } else if (elm.name() == U"editorsettings") {
+                    this->parseEditorSettings(elm);
                 }
 
             }
@@ -94,6 +104,20 @@ namespace
         {
             return FileUtil::FixRelativePath(this->m_parentPath + path);
         }
+#pragma region エディタセッティング
+        void parseEditorSettings(const XMLElement& xml)
+        {
+            for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
+                if (elm.name() == U"chunksize") {
+                    m_editorSetting.chunksize = Size{
+                        Parse<int32>(elm.attribute(U"width").value_or(U"1")),
+                        Parse<int32>(elm.attribute(U"height").value_or(U"1"))
+                    };
+                }
+            }
+        }
+#pragma endregion
+
 #pragma region レイヤーパース
         std::shared_ptr<LayerBase> tryParseLayer(const XMLElement& xml)
         {
@@ -157,19 +181,23 @@ namespace
             return layer;
         }
 
-
-        std::shared_ptr<LayerBase> parseTileLayer(const XMLElement& xml)
+        Chunk<GId> parseChunk(const XMLElement& xml)
         {
-            auto layer = std::make_shared<TileLayer>();
-            this->parseLayerCommon(layer.get(), xml);
-
-            Grid<GId> grid(
-                Parse<uint32>(xml.attribute(U"width").value_or(U"0")),
-                Parse<uint32>(xml.attribute(U"height").value_or(U"0"))
-            );
-
-            for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
-                if (elm.name() == U"data") {
+            if (m_map->isInfinite()) {
+                Chunk<GId> chunk(m_editorSetting.chunksize);
+                for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
+                    if (elm.name() != U"chunk") {
+                        continue;
+                    }
+                    Point pos{
+                        Parse<int32>(elm.attribute(U"x").value_or(U"0")),
+                        Parse<int32>(elm.attribute(U"y").value_or(U"0"))
+                    };
+                    Size size{
+                        Parse<int32>(elm.attribute(U"width").value_or(U"0")),
+                        Parse<int32>(elm.attribute(U"height").value_or(U"0"))
+                    };
+                    Grid<GId> grid(size);
                     int y = 0;
                     int x = 0;
                     for (auto&& row : elm.text().split(U'\n')) {
@@ -183,7 +211,41 @@ namespace
                         x = 0;
                         y++;
                     }
-                    layer->setGrid(std::move(grid));
+                    chunk.push(pos, std::move(grid));
+                }
+                return chunk;
+            } else {
+                Size size{
+                    Parse<int32>(xml.parent().attribute(U"width").value_or(U"0")),
+                    Parse<int32>(xml.parent().attribute(U"height").value_or(U"0"))
+                };
+                Chunk<GId> chunk(size);
+                Grid<GId> grid(size);
+                int y = 0;
+                int x = 0;
+                for (auto&& row : xml.text().split(U'\n')) {
+                    for (auto&& col : row.split(U',')) {
+                        if (col.isEmpty()) {
+                            continue;
+                        }
+                        grid[y][x] = Parse<GId>(col);
+                        x++;
+                    }
+                    x = 0;
+                    y++;
+                }
+                chunk.push({ 0, 0 }, std::move(grid));
+                return chunk;
+            }
+        }
+        std::shared_ptr<LayerBase> parseTileLayer(const XMLElement& xml)
+        {
+            auto layer = std::make_shared<TileLayer>();
+            this->parseLayerCommon(layer.get(), xml);
+
+            for (auto elm = xml.firstChild(); elm; elm = elm.nextSibling()) {
+                if (elm.name() == U"data") {
+                    layer->setChunk(this->parseChunk(elm));
                 } else if (elm.name() == U"properties") {
                     layer->setProps(this->parseProps(elm));
                 }

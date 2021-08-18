@@ -12,6 +12,7 @@
 #include "Types.hpp"
 #include "Property.hpp"
 #include "Object.hpp"
+#include "Chunk.hpp"
 
 namespace s3dTiled
 {
@@ -174,11 +175,11 @@ namespace s3dTiled
 	class TileLayer : public LayerBase
 	{
 	private:
-		s3d::Grid<GId> m_gIds;
+		Chunk<GId> m_gIds;
 	public:
 		TileLayer() = default;
-		void setGrid(s3d::Grid<GId>&& grid);
-		const s3d::Grid<GId>& getGrid() const;
+		void setChunk(Chunk<GId>&& grid);
+		const Chunk<GId>& getChunk() const;
 
 		bool draw(const TiledMap& map, const s3d::Rect& rect, double timeSec) const override;
 		LayerType getType() const override;

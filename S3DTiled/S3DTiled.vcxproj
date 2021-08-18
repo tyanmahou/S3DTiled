@@ -250,6 +250,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\S3DTiled.hpp" />
+    <ClInclude Include="include\S3DTiled\Chunk.hpp" />
     <ClInclude Include="include\S3DTiled\Layer.hpp" />
     <ClInclude Include="include\S3DTiled\TiledMap.hpp" />
     <ClInclude Include="include\S3DTiled\Object.hpp" />

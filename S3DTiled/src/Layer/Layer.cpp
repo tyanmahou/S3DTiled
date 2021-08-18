@@ -198,12 +198,12 @@ namespace s3dTiled
 
 	// TileLayer
 
-	void TileLayer::setGrid(Grid<GId>&& grid)
+	void TileLayer::setChunk(Chunk<GId>&& grid)
 	{
 		this->m_gIds = std::move(grid);
 	}
 
-	const Grid<GId>& TileLayer::getGrid() const
+	const Chunk<GId>& TileLayer::getChunk() const
 	{
 		return m_gIds;
 	}
@@ -214,16 +214,17 @@ namespace s3dTiled
 			return false;
 		}
 		Size tileSize = map.getTileSize();
-		Size mapSize = map.getMapSize();
 
-		GId xStart = static_cast<GId>(Max(0, (rect.x - rect.w)/ tileSize.x));
-		GId yStart = static_cast<GId>(Max(0, (rect.y - rect.h) / tileSize.y));
+		auto[xStart, yStart] = m_gIds.startIndex();
+		xStart = static_cast<int32>(Max(xStart, (rect.x - rect.w)/ tileSize.x));
+		yStart = static_cast<int32>(Max(yStart, (rect.y - rect.h) / tileSize.y));
 
-		GId xEnd = Min<GId>(mapSize.x, xStart + static_cast<GId>(rect.w * 3 / tileSize.x));
-		GId yEnd = Min<GId>(mapSize.y, yStart + static_cast<GId>(rect.h * 3/ tileSize.y));
-		for (GId y = yStart; y < yEnd; ++y) {
-			for (GId x = xStart; x < xEnd; ++x) {
-				GId gId = m_gIds[y][x];
+		auto [xEnd, yEnd] = m_gIds.endIndex();
+		xEnd = Min<int32>(xEnd, xStart + static_cast<int32>(rect.w * 3 / tileSize.x));
+		yEnd = Min<int32>(yEnd, yStart + static_cast<int32>(rect.h * 3/ tileSize.y));
+		for (int32 y = yStart; y < yEnd; ++y) {
+			for (int32 x = xStart; x < xEnd; ++x) {
+				GId gId = m_gIds(y, x);
 				if (gId <= 0) {
 					continue;
 				}
