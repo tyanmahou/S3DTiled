@@ -56,7 +56,7 @@ namespace s3dTiled
         {
             return m_endIndex.x - m_startIndex.x;
         }
-        s3d::Size height() const
+        s3d::int32 height() const
         {
             return m_endIndex.y - m_startIndex.y;
         }
