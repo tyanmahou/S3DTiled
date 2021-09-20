@@ -278,7 +278,7 @@ namespace s3dTiled
 				pos += offset;
 
 				double rad = Math::ToRadians(obj.rotation);
-				pos = Mat3x2::Rotate(rad, obj.pos).transform(pos);
+				pos = Mat3x2::Rotate(rad, obj.pos).transformPoint(pos);
 
 				auto&& textureQuad = texture.rotated(rad);
 				auto drawRegion = textureQuad.quad.movedBy(pos - textureQuad.center);

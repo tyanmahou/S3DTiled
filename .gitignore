@@ -389,10 +389,12 @@ Screenshot/
 AS_DEBUG/
 [Ee]xample/
 [Ee]ngine/
+[Dd]ll/
 
 ## include/
 ## lib/
 
 ## Application
+S3DTiled/lib/
 [Ww]ork
 [Rr]esources

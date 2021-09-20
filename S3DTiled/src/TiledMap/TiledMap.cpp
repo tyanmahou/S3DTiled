@@ -9,7 +9,7 @@
 #include <Siv3D/Color.hpp>
 #include <Siv3D/Optional.hpp>
 #include <Siv3D/Vector2D.hpp>
-#include <Siv3D/Rectangle.hpp>
+#include <Siv3D/RectF.hpp>
 #include <Siv3D/Array.hpp>
 #include <Siv3D/TextureRegion.hpp>
 

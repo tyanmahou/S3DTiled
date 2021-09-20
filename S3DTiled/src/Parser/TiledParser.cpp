@@ -46,7 +46,7 @@ namespace
 
         std::shared_ptr<CTiledMap> parseTmx(s3d::FilePathView path)
         {
-            XMLReader root(BinaryReader(path), false);
+            XMLReader root(BinaryReader(path), PreserveWhitespace::No);
             if (!root) {
                 return nullptr;
             }
@@ -87,7 +87,7 @@ namespace
 
         std::shared_ptr<CTileSet> parseTsx(s3d::FilePathView path)
         {
-            XMLReader root(BinaryReader(path), false);
+            XMLReader root(BinaryReader(path), PreserveWhitespace::No);
             if (!root) {
                 return nullptr;
             }

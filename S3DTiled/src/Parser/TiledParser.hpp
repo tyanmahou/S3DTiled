@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <Siv3D/Fwd.hpp>
+#include <Siv3D/StringView.hpp>
 
 namespace s3dTiled
 {

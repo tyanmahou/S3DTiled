@@ -2,7 +2,7 @@
 
 #include<variant>
 
-#include <Siv3D/Rectangle.hpp>
+#include <Siv3D/RectF.hpp>
 #include <Siv3D/Ellipse.hpp>
 #include <Siv3D/LineString.hpp>
 #include <Siv3D/Polygon.hpp>

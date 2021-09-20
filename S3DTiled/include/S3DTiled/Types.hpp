@@ -4,6 +4,7 @@
 
 #include <Siv3D/Fwd.hpp>
 #include <Siv3D/HashTable.hpp>
+#include <Siv3D/Optional.hpp>
 
 namespace s3dTiled
 {
