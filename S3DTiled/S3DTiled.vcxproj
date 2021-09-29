@@ -45,8 +45,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SIV3D_0_6_1)\include;$(SIV3D_0_6_1)\include\ThirdParty;$(ProjectDir)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SIV3D_0_6_0)\lib\Windows;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SIV3D_0_6_2)\include;$(SIV3D_0_6_2)\include\ThirdParty;$(ProjectDir)\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SIV3D_0_6_2)\lib\Windows;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Intermediate\$(ProjectName)\Debug\</OutDir>
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Debug\Intermediate\</IntDir>
     <TargetName>$(ProjectName)_d</TargetName>
@@ -55,8 +55,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SIV3D_0_6_1)\include;$(SIV3D_0_6_1)\include\ThirdParty;$(ProjectDir)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SIV3D_0_6_0)\lib\Windows;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SIV3D_0_6_2)\include;$(SIV3D_0_6_2)\include\ThirdParty;$(ProjectDir)\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SIV3D_0_6_2)\lib\Windows;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\</OutDir>
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\Intermediate\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
