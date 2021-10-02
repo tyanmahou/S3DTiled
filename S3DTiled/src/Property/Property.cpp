@@ -92,10 +92,6 @@ namespace s3dTiled
 	{
 		return this->toString();
 	}
-	Property::operator s3d::StringView() const
-	{
-		return this->toString();
-	}
 	Property::Type Property::getType() const
 	{
 		return m_type;

@@ -60,7 +60,6 @@ namespace s3dTiled
 
 			const s3d::String& toString() const;
 			operator s3d::String() const;
-			operator s3d::StringView() const;
 
 			Type getType()const;
 
