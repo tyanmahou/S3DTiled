@@ -26,5 +26,7 @@ namespace s3dTiled
 		s3d::Optional<Property> getProperty(const s3d::String& key) const;
 
 		s3d::RectF toRectF() const;
+
+		s3d::Optional<Property> operator[](const s3d::String& key) const;
 	};
 } // namespace s3dTiled

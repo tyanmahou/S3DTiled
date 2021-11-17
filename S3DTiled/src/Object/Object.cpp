@@ -19,4 +19,8 @@ namespace s3dTiled
 	{
 		return std::get<s3d::RectF>(shape).movedBy(pos);
 	}
+	s3d::Optional<Property> Object::operator[](const s3d::String& key) const
+	{
+		return this->getProperty(key);
+	}
 } // namespace s3dTiled
