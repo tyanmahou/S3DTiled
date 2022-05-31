@@ -1,4 +1,4 @@
-#include "FileUtil.hpp"
+﻿#include "FileUtil.hpp"
 #include <stack>
 #include <Siv3D/FileSystem.hpp>
 
@@ -20,7 +20,11 @@ namespace s3dTiled::FileUtil
 				if (dirName == U".") {
 
 				} else if (dirName == U"..") {
-					dirNameStack.pop();
+					if (dirNameStack.empty()) {
+						dirNameStack.push(dirName);
+					} else {
+						dirNameStack.pop();
+					}
 				} else {
 					dirNameStack.push(dirName);
 				}
