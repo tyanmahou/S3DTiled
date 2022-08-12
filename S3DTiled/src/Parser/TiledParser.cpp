@@ -1,4 +1,4 @@
-#include "TiledParser.hpp"
+﻿#include "TiledParser.hpp"
 #include "FileUtil.hpp"
 #include "../TileSet/CTileSet.hpp"
 #include "../TiledMap/CTiledMap.hpp"
@@ -361,7 +361,7 @@ namespace
                 constexpr GId flipFlag = 0x40000000;
 
                 obj.isMirrored = rawGId & mirrorFlag;
-                obj.isFliped = rawGId & flipFlag;
+                obj.isFlipped = rawGId & flipFlag;
 
                 auto fixedGId = rawGId & ~(mirrorFlag | flipFlag);
                 obj.gId = fixedGId;
