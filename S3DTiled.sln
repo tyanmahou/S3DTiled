@@ -5,8 +5,6 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "S3DTiled", "S3DTiled\S3DTiled.vcxproj", "{AFBF98FC-667B-41A5-9E30-4F1C0F3343D7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "S3DTiledOld", "S3DTiledOld\S3DTiledOld.vcxproj", "{BC2CEC25-A0B3-4141-A586-101B83CA4C19}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -17,10 +15,6 @@ Global
 		{AFBF98FC-667B-41A5-9E30-4F1C0F3343D7}.Debug|x64.Build.0 = Debug|x64
 		{AFBF98FC-667B-41A5-9E30-4F1C0F3343D7}.Release|x64.ActiveCfg = Release|x64
 		{AFBF98FC-667B-41A5-9E30-4F1C0F3343D7}.Release|x64.Build.0 = Release|x64
-		{BC2CEC25-A0B3-4141-A586-101B83CA4C19}.Debug|x64.ActiveCfg = Debug|x64
-		{BC2CEC25-A0B3-4141-A586-101B83CA4C19}.Debug|x64.Build.0 = Debug|x64
-		{BC2CEC25-A0B3-4141-A586-101B83CA4C19}.Release|x64.ActiveCfg = Release|x64
-		{BC2CEC25-A0B3-4141-A586-101B83CA4C19}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
